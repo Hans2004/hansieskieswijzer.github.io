@@ -1,3 +1,5 @@
+Deze kieswijzer is ontstaan uit een conversatie met een NotebookLM waarin ik alle beschikbare partijprogramma's heb geupload van de partijen die deze beschikbaar stelden. Ontbrekende programma's zijn SGP (mag je niet van downloaden op zondag), BIJ1 (die hebben geen downloadbaar programma) en piratenpartij (geen downloadbaar programma).
+
 Op basis van de verstrekte bronnen zijn er aanzienlijke verschillen in de standpunten van de diverse politieke partijen. De meest in het oog springende onderscheidingen liggen op het vlak van klimaat en energie, landbouw en stikstof, de rol en omvang van de overheid, migratie en de houding ten opzichte van de Europese Unie.
 Hieronder volgt een thematische uiteenzetting van de belangrijkste verschillen.
 Klimaat, Energie en Duurzaamheid
