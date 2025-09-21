@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politieke Keuzewijzer Quiz (40 Vragen)</title>
+    <title>Politieke Keuzewijzer Quiz (30 Vragen)</title>
     <style>
         :root {
             --primary-color: #0056b3;
@@ -232,7 +232,7 @@
 
         <div id="results-container" style="display:none;">
             <h2>Uw Resultaten</h2>
-            <h3>Scores per partij (maximaal 40 punten):</h3>
+            <h3>Scores per partij (maximaal 30 punten):</h3>
             <ul id="score-list"></ul>
             <div id="best-match">
                 <h3 id="best-match-party"></h3>
@@ -256,524 +256,285 @@
                     "B": "Het beleid moet vooral haalbaar, uitvoerbaar en betaalbaar zijn. We herzien afspraken als ze leiden tot onrealistische ambities. Wie rood staat, kan niet groen doen.",
                     "C": "Het huidige klimaatbeleid is onbetaalbare gekte. We trekken de Klimaatwet in, stappen uit het Klimaatakkoord van Parijs en stoppen met de energietransitie."
                 },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "Volt", "D66", "SP"],
-                    "B": ["BBB", "CDA", "VVD", "NSC", "JA21", "CU"],
-                    "C": ["FvD", "PVV"]
-                }
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "Volt", "D66", "SP"], "B": ["BBB", "CDA", "VVD", "NSC", "JA21", "CU"], "C": ["FvD", "PVV"] }
             },
             {
                 "question": "2. Welke rol speelt kernenergie in de toekomstige energiemix?",
                 "options": {
-                    "A": "Kernenergie is een schijnoplossing vanwege het afvalprobleem en de hoge kosten. We bouwen bestaande centrales zo snel mogelijk af en zetten vol in op zon en wind.",
-                    "B": "Kernenergie is onmisbaar voor een betrouwbare en betaalbare energievoorziening. We versnellen de bouw van nieuwe kerncentrales, inclusief kleine modulaire reactoren (SMR's).",
+                    "A": "Kernenergie is een schijnoplossing vanwege het afvalprobleem. We bouwen bestaande centrales zo snel mogelijk af en zetten vol in op zon en wind.",
+                    "B": "Kernenergie is onmisbaar voor een betrouwbare en betaalbare energievoorziening. We versnellen de bouw van nieuwe kerncentrales.",
                     "C": "We moeten ons vooral richten op onze eigen fossiele brandstoffen. We hervatten gasboringen in Groningen en houden onze kolen- en gascentrales open."
                 },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "SP"],
-                    "B": ["BBB", "CDA", "VVD", "NSC", "JA21", "PVV", "D66", "Volt", "CU"],
-                    "C": ["FvD"]
-                }
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "SP"], "B": ["BBB", "CDA", "VVD", "NSC", "JA21", "PVV", "D66", "Volt", "CU"], "C": ["FvD"] }
             },
             {
-                "question": "3. Hoe moet worden omgegaan met windturbines op land?",
-                "options": {
-                    "A": "Er komt een pauzeknop voor windenergie op land. Er komen strenge landelijke afstandsnormen en een gezondheidstoets. Omwonenden moeten inspraak hebben.",
-                    "B": "Wind op land is een belangrijke energiebron. Omwonenden moeten tijdig betrokken worden en kunnen (mede-)eigenaar worden, maar de energietransitie moet doorgaan.",
-                    "C": "Geen enkele windturbine meer erbij. Windturbines waar omwonenden last van hebben, worden afgebroken. Ze maken mensen ziek en vervuilen het landschap."
-                },
-                "scores": {
-                    "A": ["BBB", "JA21", "CDA"],
-                    "B": ["PvdD", "GroenLinks-PvdA", "SP", "D66", "NSC", "Volt", "CU"],
-                    "C": ["PVV", "FvD"]
-                }
-            },
-            {
-                "question": "4. Wat moet er gebeuren met de omvang van de veestapel?",
+                "question": "3. Hoe moet worden omgegaan met de omvang van de veestapel?",
                 "options": {
                     "A": "De veestapel moet met minstens 75% krimpen. We moeten een einde maken aan de bio-industrie vanwege dierenleed, stikstof en klimaatimpact.",
-                    "B": "De sector verdient waardering en moet kunnen doen waar ze goed in is. Gedwongen uitkoop is onbesprekelijk. We kiezen voor innovatie en vakmanschap, niet voor krimp.",
+                    "B": "De sector verdient waardering. Gedwongen uitkoop is onbespreekbaar. We kiezen voor innovatie en vakmanschap, niet voor krimp.",
                     "C": "Een transitie is nodig, maar in samenwerking met boeren. We bieden hen perspectief en een goed verdienmodel om doelen voor natuur en waterkwaliteit te halen."
                 },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA"],
-                    "B": ["BBB", "PVV", "FvD", "JA21"],
-                    "C": ["NSC", "CDA", "VVD", "D66", "CU", "Volt", "SP"]
-                }
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA"], "B": ["BBB", "PVV", "FvD", "JA21"], "C": ["NSC", "CDA", "VVD", "D66", "CU", "Volt", "SP"] }
             },
             {
-                "question": "5. Hoe moet de stikstofcrisis worden opgelost?",
+                "question": "4. Hoe moet de stikstofcrisis worden opgelost?",
                 "options": {
-                    "A": "Alle sectoren moeten hun uitstoot verplicht verminderen. Een forse krimp van de veehouderij is onvermijdelijk, maar ook de luchtvaart en industrie moeten bijdragen.",
-                    "B": "We moeten de modellenwerkelijkheid (KDW) loslaten en sturen op de daadwerkelijke staat van de natuur. PAS-melders moeten met voorrang gelegaliseerd worden en we kiezen voor technische innovatie.",
+                    "A": "Alle sectoren moeten hun uitstoot verplicht verminderen. Een forse krimp van de veehouderij is onvermijdelijk.",
+                    "B": "We moeten de modellenwerkelijkheid (KDW) loslaten en sturen op de daadwerkelijke staat van de natuur. PAS-melders worden met voorrang gelegaliseerd.",
                     "C": "Het stikstofbeleid moet volledig van tafel. De regels zijn gebaseerd op foute modellen en schaden de boeren en de economie onnodig."
                 },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "SP", "D66", "Volt", "CU"],
-                    "B": ["BBB", "NSC", "VVD", "CDA", "JA21"],
-                    "C": ["FvD", "PVV"]
-                }
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "SP", "D66", "Volt", "CU"], "B": ["BBB", "NSC", "VVD", "CDA", "JA21"], "C": ["FvD", "PVV"] }
             },
             {
-                "question": "6. Dierenwelzijn in de veehouderij: wat is de juiste benadering?",
+                "question": "5. Hoe moet de belasting op grote vermogens eruitzien?",
                 "options": {
-                    "A": "De behoeften van dieren staan voorop. Rechten voor dieren moeten in de Grondwet. Pijnlijke ingrepen en krappe kooien worden verboden en alle dieren krijgen vrije uitloop.",
-                    "B": "Dieren in de Nederlandse veehouderij hebben het in Nederland goed en veel beter dan in de meeste andere landen. Aanvullende regels zijn niet nodig.",
-                    "C": "Dierenwelzijn is belangrijk, maar moet in balans zijn met de belangen van boeren en de economie. We steunen het Convenant Dierwaardige Veehouderij."
-                },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "SP", "Volt"],
-                    "B": ["BBB", "JA21", "VVD"],
-                    "C": ["CDA", "NSC", "CU", "D66"]
-                }
-            },
-            {
-                "question": "7. Wat is uw standpunt over de jacht?",
-                "options": {
-                    "A": "De jacht voor plezier moet verboden worden. Dieren moeten zo veel mogelijk met rust worden gelaten.",
-                    "B": "Jacht en faunabeheer zijn een belangrijk en noodzakelijk onderdeel van goed natuuronderhoud, schadepreventie en verkeersveiligheid. Jagers moeten actief betrokken worden bij beleid.",
-                    "C": "Er moet een einde komen aan de hobbyjacht. Jagersclubs (Faunabeheereenheden) worden afgeschaft."
-                },
-                "scores": {
-                    "A": ["PvdD", "SP"],
-                    "B": ["BBB", "JA21", "CDA", "VVD", "NSC", "FvD"],
-                    "C": ["PvdD", "GroenLinks-PvdA"]
-                }
-            },
-            {
-                "question": "8. Het minimumloon moet...",
-                "options": {
-                    "A": "omhoog naar € 18 per uur. De daaraan gekoppelde uitkeringen zoals de AOW stijgen mee.",
-                    "B": "stapsgewijs omhoog naar € 18 per uur, maar dit moet gekoppeld zijn aan een stelselvernieuwing om de loonkosten voor werkgevers te compenseren.",
-                    "C": "omhoog naar € 16 per uur, en de uitkeringen stijgen mee."
-                },
-                "scores": {
-                    "A": ["SP", "GroenLinks-PvdA", "PvdD"],
-                    "B": ["NSC", "CU"],
-                    "C": ["DENK"]
-                }
-            },
-            {
-                "question": "9. Hoe moet de belasting op grote vermogens eruitzien?",
-                "options": {
-                    "A": "Er moet een miljonairsbelasting of klimaatbelasting komen voor de grootste vermogens. De erfbelasting voor grote erfenissen moet omhoog.",
+                    "A": "Er moet een miljonairsbelasting komen voor de grootste vermogens. De erfbelasting voor grote erfenissen moet omhoog.",
                     "B": "De belastingen op sparen (box 3) en erven moeten zeker niet omhoog en het liefst worden afgeschaft. We stimuleren vermogensopbouw.",
-                    "C": "We moeten belasting heffen op daadwerkelijk genoten inkomsten uit vermogen, niet op fictief rendement. De eigen woning blijft onbelast."
+                    "C": "We moeten belasting heffen op daadwerkelijk genoten inkomsten uit vermogen, niet op fictief rendement."
                 },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "SP", "CU", "Volt"],
-                    "B": ["VVD", "FvD", "JA21", "PVV"],
-                    "C": ["NSC", "CDA", "BBB", "D66", "DENK"]
-                }
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "SP", "CU", "Volt"], "B": ["VVD", "FvD", "JA21", "PVV"], "C": ["NSC", "CDA", "BBB", "D66", "DENK"] }
             },
             {
-                "question": "10. Wat is de beste aanpak voor het toeslagenstelsel?",
-                "options": {
-                    "A": "Het stelsel moet fundamenteel eenvoudiger. We vervangen de toeslagen door een vast, begrijpelijk basisbedrag of een verzilverbare belastingkorting.",
-                    "B": "We maken toeslagen overbodig door publieke voorzieningen als kinderopvang gratis te maken en het minimumloon fors te verhogen.",
-                    "C": "De AOW en uitkeringen stijgen mee met de lonen. We hervormen het belastingstelsel zodat werken meer loont en mensen minder afhankelijk zijn van toeslagen."
-                },
-                "scores": {
-                    "A": ["D66", "NSC", "CU", "Volt"],
-                    "B": ["SP", "GroenLinks-PvdA", "PvdD"],
-                    "C": ["CDA", "VVD"]
-                }
-            },
-            {
-                "question": "11. Wat moet er gebeuren met het eigen risico in de zorg?",
+                "question": "6. Wat moet er gebeuren met het eigen risico in de zorg?",
                 "options": {
                     "A": "Het moet volledig worden afgeschaft. Zorg mag geen financiële drempel zijn.",
-                    "B": "Het moet niet worden afgeschaft, omdat dit de premie voor iedereen duurder maakt. Wel kunnen we de kosten voor chronisch zieken of bij specifieke behandelingen beperken.",
+                    "B": "Het moet niet worden afgeschaft, omdat dit de premie voor iedereen duurder maakt. Wel kunnen we de kosten voor chronisch zieken beperken.",
                     "C": "Het moet worden vervangen door een inkomensafhankelijke eigen bijdrage, zodat de sterkste schouders de zwaarste lasten dragen."
                 },
-                "scores": {
-                    "A": ["PvdD", "PVV", "SP", "GroenLinks-PvdA", "DENK", "CU"],
-                    "B": ["VVD", "JA21", "D66", "CDA"],
-                    "C": ["NSC"]
-                }
+                "scores": { "A": ["PvdD", "PVV", "SP", "GroenLinks-PvdA", "DENK", "CU"], "B": ["VVD", "JA21", "D66", "CDA"], "C": ["NSC"] }
             },
             {
-                "question": "12. Hoe kijkt u naar marktwerking in de zorg?",
+                "question": "7. Hoe kijkt u naar marktwerking in de zorg?",
                 "options": {
-                    "A": "De zorg is een basisvoorziening, geen markt. Marktwerking moet worden teruggedrongen. Private investeerders en winstuitkeringen horen niet thuis in de zorg.",
-                    "B": "Solidariteit blijft de basis, maar er is ook ruimte voor marktpartijen zoals zelfstandige behandelcentra. We moeten een gelijker speelveld creëren tussen ziekenhuizen en private klinieken.",
-                    "C": "De marktwerking is doorgeslagen. We schaffen de concurrentie tussen zorgverzekeraars af en gaan naar één basisverzekering of een Nationaal ZorgFonds."
+                    "A": "De zorg is een basisvoorziening, geen markt. Private investeerders en winstuitkeringen horen niet thuis in de zorg.",
+                    "B": "Solidariteit blijft de basis, maar er is ook ruimte voor marktpartijen zoals zelfstandige behandelcentra.",
+                    "C": "De marktwerking is doorgeslagen. We schaffen de concurrentie tussen zorgverzekeraars af en gaan naar één Nationaal ZorgFonds."
                 },
-                "scores": {
-                    "A": ["GroenLinks-PvdA", "PvdD", "SP", "CU", "Volt"],
-                    "B": ["CDA", "VVD", "D66"],
-                    "C": ["SP", "BBB", "DENK", "PvdD"]
-                }
+                "scores": { "A": ["GroenLinks-PvdA", "PvdD", "SP", "CU", "Volt"], "B": ["CDA", "VVD", "D66"], "C": ["SP", "BBB", "DENK", "PvdD"] }
             },
             {
-                "question": "13. Wat is de juiste aanpak van het asielbeleid?",
+                "question": "8. Wat is de juiste aanpak van het asielbeleid?",
                 "options": {
-                    "A": "Een totale asielstop en het opzeggen van internationale verdragen. Nederland is vol. Wie zich misdraagt, wordt direct uitgezet.",
+                    "A": "Een totale asielstop en het opzeggen van internationale verdragen. Nederland is vol.",
                     "B": "Een humaan en solidair beleid. We moeten zorgen voor veilige vluchtroutes, menswaardige opvang en de grondoorzaken van migratie aanpakken.",
-                    "C": "Een streng, realistisch en werkbaar beleid om de instroom te beperken. Asielprocedures moeten waar mogelijk buiten Europa plaatsvinden."
+                    "C": "Een streng en realistisch beleid om de instroom te beperken. Asielprocedures moeten waar mogelijk buiten Europa plaatsvinden."
                 },
-                "scores": {
-                    "A": ["PVV", "FvD", "JA21"],
-                    "B": ["PvdD", "GroenLinks-PvdA", "DENK", "Volt", "SP", "CU"],
-                    "C": ["NSC", "CDA", "BBB", "VVD", "D66"]
-                }
+                "scores": { "A": ["PVV", "FvD", "JA21"], "B": ["PvdD", "GroenLinks-PvdA", "DENK", "Volt", "SP", "CU"], "C": ["NSC", "CDA", "BBB", "VVD", "D66"] }
             },
             {
-                "question": "14. Wat is uw standpunt over de Spreidingswet, die gemeenten kan dwingen asielzoekers op te vangen?",
+                "question": "9. Wat is uw standpunt over de Spreidingswet, die gemeenten kan dwingen asielzoekers op te vangen?",
                 "options": {
                     "A": "De Spreidingswet moet onmiddellijk worden ingetrokken. Gemeenten moeten zelf beslissen over opvang, zonder dwang vanuit Den Haag.",
                     "B": "De wet moet worden uitgevoerd voor een eerlijke verdeling over het land. Ook rijkere gemeenten moeten hun eerlijke aandeel leveren."
                 },
-                "scores": {
-                    "A": ["PVV", "JA21", "BBB", "VVD"],
-                    "B": ["GroenLinks-PvdA", "PvdD", "SP", "Volt", "D66", "CU", "CDA", "NSC", "DENK"]
-                }
+                "scores": { "A": ["PVV", "JA21", "BBB", "VVD"], "B": ["GroenLinks-PvdA", "PvdD", "SP", "Volt", "D66", "CU", "CDA", "NSC", "DENK"] }
             },
             {
-                "question": "15. Wat verwacht u van nieuwkomers?",
+                "question": "10. Hoe kijkt u naar de rol van de Europese Unie?",
                 "options": {
-                    "A": "Ze moeten zich aanpassen aan de Nederlandse cultuur en waarden. Wie hier wil wonen, hoort mee te doen en onze normen te respecteren. Dit is niet onderhandelbaar.",
-                    "B": "We moeten stoppen met het label 'integratie' voor mensen die hier opgroeien. We moeten uitgaan van wederzijdse acceptatie, niet van eenzijdige aanpassing.",
-                    "C": "Iedereen, ook nieuwkomers, moet onze vrije waarden onderschrijven. Wie onze wetten afwijst of onze verdraagzaamheid ondermijnt, heeft hier niets te zoeken."
+                    "A": "We moeten naar een federaal Europa met een Europees leger en een Europese minister van Financiën.",
+                    "B": "Nederland moet uit de EU (Nexit). De EU ondermijnt onze soevereiniteit en kost ons miljarden.",
+                    "C": "De EU is nuttig voor handel en veiligheid, maar we moeten kritisch zijn op 'Brusselse bemoeizucht'."
                 },
-                "scores": {
-                    "A": ["BBB", "PVV", "VVD", "NSC", "CDA", "JA21", "CU", "FvD"],
-                    "B": ["DENK"],
-                    "C": ["D66", "GroenLinks-PvdA", "Volt"]
-                }
+                "scores": { "A": ["Volt", "D66"], "B": ["FvD", "PVV"], "C": ["BBB", "CDA", "VVD", "NSC", "JA21", "SP", "CU", "GroenLinks-PvdA"] }
             },
             {
-                "question": "16. Hoe kijkt u naar de rol van de Europese Unie?",
+                "question": "11. Hoeveel moet Nederland uitgeven aan defensie?",
                 "options": {
-                    "A": "We moeten naar een federaal Europa met een Europees leger en een Europese minister van Financiën. Grote problemen kunnen we alleen samen oplossen.",
-                    "B": "Nederland moet uit de EU (Nexit). De EU ondermijnt onze soevereiniteit en kost ons miljarden. We moeten weer baas in eigen land worden.",
-                    "C": "De EU is nuttig, maar we moeten kritisch zijn op 'Brusselse bemoeizucht'. We moeten geen nationale koppen op Europees beleid zetten."
+                    "A": "We moeten voldoen aan de NAVO-norm van 3,5% van het BBP. Dit is nodig om onze vrijheid en veiligheid te beschermen.",
+                    "B": "Investeringen in defensie mogen niet ten koste gaan van sociale zekerheid, zorg en onderwijs. We zetten in op vrede en diplomatie.",
+                    "C": "Investeren is nodig, maar moet gekoppeld worden aan een weerbare samenleving met burgersteunpunten en goede infrastructuur."
                 },
-                "scores": {
-                    "A": ["Volt", "D66"],
-                    "B": ["FvD", "PVV"],
-                    "C": ["BBB", "CDA", "VVD", "NSC", "JA21", "SP", "CU", "GroenLinks-PvdA"]
-                }
+                "scores": { "A": ["VVD", "CDA", "D66", "JA21", "CU", "BBB", "NSC"], "B": ["PvdD", "GroenLinks-PvdA", "SP"], "C": ["NSC", "BBB"] }
             },
             {
-                "question": "17. Wat is uw standpunt over de defensie-uitgaven?",
+                "question": "12. Wat is de juiste houding in het conflict tussen Israël en de Palestijnen?",
                 "options": {
-                    "A": "De uitgaven moeten fors omhoog, met 3,5% van het BBP als uitgangspunt, zoals de nieuwe NAVO-norm voorschrijft. Dit is nodig om onze vrijheid te beschermen.",
-                    "B": "Investeringen in defensie mogen niet ten koste gaan van klimaat, natuur, sociale zekerheid, zorg en onderwijs. We zetten in op vrede en diplomatie.",
-                    "C": "Investeren in defensie is nodig, maar moet gekoppeld worden aan een weerbare samenleving met burgersteunpunten en goede infrastructuur, zoals de Lelylijn."
-                },
-                "scores": {
-                    "A": ["VVD", "CDA", "D66", "JA21", "CU", "BBB", "NSC"],
-                    "B": ["PvdD", "GroenLinks-PvdA", "SP"],
-                    "C": ["NSC", "BBB"]
-                }
-            },
-            {
-                "question": "18. Moet Nederland een Europees leger steunen?",
-                "options": {
-                    "A": "Ja, we moeten toewerken naar een Europese krijgsmacht. Alleen zo kan Europa zichzelf verdedigen en wordt het minder afhankelijk van de VS.",
-                    "B": "Nee, er komt geen Europees leger. De Tweede Kamer moet altijd zelf kunnen beslissen over de inzet van Nederlandse militairen."
-                },
-                "scores": {
-                    "A": ["Volt", "D66"],
-                    "B": ["CDA", "VVD", "NSC", "BBB", "JA21", "SP", "CU", "PvdD", "GroenLinks-PvdA", "PVV", "FvD"]
-                }
-            },
-            {
-                "question": "19. Wat is de juiste houding in het conflict tussen Israël en de Palestijnen?",
-                "options": {
-                    "A": "Nederland moet de genocide en bezetting door Israël veroordelen, sancties instellen en de Palestijnse staat erkennen. Het internationaal recht is leidend.",
-                    "B": "Israël is een democratie en heeft het recht op zelfverdediging. Nederland moet de banden met Israël versterken en de ambassade naar Jeruzalem verhuizen.",
+                    "A": "Nederland moet de genocide en bezetting door Israël veroordelen, sancties instellen en de Palestijnse staat erkennen.",
+                    "B": "Israël heeft het recht op zelfverdediging. Nederland moet de banden met Israël versterken en de ambassade naar Jeruzalem verhuizen.",
                     "C": "We moeten streven naar een tweestatenoplossing. Het geweld van Hamas is onacceptabel, maar de illegale Israëlische nederzettingen ondermijnen de vrede."
                 },
-                "scores": {
-                    "A": ["PvdD", "DENK", "SP", "GroenLinks-PvdA", "Volt"],
-                    "B": ["PVV", "JA21", "BBB", "FvD"],
-                    "C": ["CDA", "VVD", "NSC", "CU", "D66"]
-                }
+                "scores": { "A": ["PvdD", "DENK", "SP", "GroenLinks-PvdA", "Volt"], "B": ["PVV", "JA21", "BBB", "FvD"], "C": ["CDA", "VVD", "NSC", "CU", "D66"] }
             },
             {
-                "question": "20. Hoe moet de woningbouw versneld worden?",
+                "question": "13. Hoe moet de woningbouw versneld worden?",
                 "options": {
-                    "A": "Door tien nieuwe steden te bouwen en een Rijksgrondfaciliteit op te richten. We moeten groots durven denken, zoals bij de Flevopolder.",
-                    "B": "Door de stikstofcrisis op te lossen. Een krimp van de veestapel maakt landbouwgrond vrij voor natuur én woningbouw. Liever een dak boven je hoofd dan een biefstuk op je bord.",
-                    "C": "Door regels te schrappen en de Wet betaalbare huur af te schaffen. Bouwen, bouwen, bouwen."
+                    "A": "Door tien nieuwe steden te bouwen en een Rijksgrondfaciliteit op te richten. We moeten groots durven denken.",
+                    "B": "Door de stikstofcrisis op te lossen. Een krimp van de veestapel maakt landbouwgrond vrij voor natuur én woningbouw.",
+                    "C": "Door regels te schrappen, de Wet betaalbare huur af te schaffen en te stoppen met geneuzel over duurzaamheid. Bouwen, bouwen, bouwen."
                 },
-                "scores": {
-                    "A": ["D66", "CDA"],
-                    "B": ["PvdD", "GroenLinks-PvdA", "SP", "Volt"],
-                    "C": ["VVD", "PVV", "FvD", "JA21", "BBB"]
-                }
+                "scores": { "A": ["D66", "CDA"], "B": ["PvdD", "GroenLinks-PvdA", "SP", "Volt"], "C": ["VVD", "PVV", "FvD", "JA21", "BBB"] }
             },
             {
-                "question": "21. Wat is uw mening over de 'Week van de Lentekriebels' op basisscholen?",
+                "question": "14. Moeten burgers meer directe invloed krijgen via referenda?",
                 "options": {
-                    "A": "Deze week moet worden afgeschaft. Het is een vorm van seksuele woke-indoctrinatie die niet thuishoort op school. Opvoeding is aan de ouders.",
-                    "B": "Het is belangrijk, maar ouders moeten kunnen bepalen welke vormen van geseksualiseerd onderwijs hun kinderen krijgen. Er is geen plek voor 'regenboogdwang'.",
-                    "C": "Seksuele voorlichting, met aandacht voor diversiteit en het aangeven van grenzen, is een essentieel onderdeel van het curriculum. Het helpt kinderen weerbaar te maken."
-                },
-                "scores": {
-                    "A": ["PVV", "FvD"],
-                    "B": ["DENK", "BBB"],
-                    "C": ["D66", "Volt", "SP", "PvdD", "CU", "NSC", "VVD", "CDA", "GroenLinks-PvdA"]
-                }
-            },
-            {
-                "question": "22. Moeten burgers meer directe invloed krijgen via referenda?",
-                "options": {
-                    "A": "Ja, er moet een bindend correctief referendum komen naar Zwitsers model. De bevolking moet de politiek kunnen terugfluiten.",
-                    "B": "Ja, het raadgevend referendum moet worden heringevoerd, eventueel in combinatie met burgerberaden om complexe vraagstukken goed te kunnen wegen.",
+                    "A": "Ja, er moet een bindend correctief referendum komen naar Zwitsers model.",
+                    "B": "Ja, het raadgevend referendum moet worden heringevoerd, eventueel in combinatie met burgerberaden.",
                     "C": "Nee, referenda bieden schijninvloed en vergroten de verdeeldheid. De volksvertegenwoordiging moet de besluiten nemen."
                 },
-                "scores": {
-                    "A": ["SP", "FvD", "PVV"],
-                    "B": ["PvdD", "D66", "NSC", "DENK"],
-                    "C": ["JA21", "CU", "Volt", "VVD", "CDA", "BBB"]
-                }
+                "scores": { "A": ["SP", "FvD", "PVV"], "B": ["PvdD", "D66", "NSC", "DENK"], "C": ["JA21", "CU", "Volt", "VVD", "CDA", "BBB"] }
             },
             {
-                "question": "23. De Eerste Kamer moet wat u betreft...",
+                "question": "15. Wat is de toekomst van de monarchie?",
                 "options": {
-                    "A": "worden afgeschaft. Het is een ondemocratisch orgaan dat de wil van de direct gekozen Tweede Kamer kan blokkeren.",
-                    "B": "worden hervormd. De zittingsduur wordt verlengd naar zes jaar, met verkiezingen om de drie jaar. Dit versterkt de rol als 'Kamer van bezinning'.",
-                    "C": "blijven functioneren zoals nu, als een belangrijke controle op de kwaliteit en uitvoerbaarheid van wetgeving."
+                    "A": "We moeten het koningschap moderniseren naar een puur ceremoniële rol. De koning moet belasting betalen.",
+                    "B": "Het Koningshuis is verbonden met onze geschiedenis. De koning moet weer een rol krijgen bij de kabinetsformatie.",
+                    "C": "Nederland moet een republiek worden. Er moet een referendum komen over het Koninklijk Huis."
                 },
-                "scores": {
-                    "A": ["FvD", "PVV", "D66", "DENK"],
-                    "B": ["CDA", "GroenLinks-PvdA", "SP"],
-                    "C": ["VVD", "BBB", "NSC", "CU", "JA21", "PvdD", "Volt"]
-                }
+                "scores": { "A": ["PvdD", "D66", "GroenLinks-PvdA", "Volt", "NSC"], "B": ["BBB", "JA21", "CDA", "PVV"], "C": ["FvD", "SP"] }
             },
             {
-                "question": "24. Hoe kijkt u naar de regulering van softdrugs (cannabis)?",
+                "question": "16. Hoe kijkt u naar de regulering van softdrugs (cannabis)?",
                 "options": {
-                    "A": "We legaliseren de hele keten, van productie tot verkoop. Dit haalt de handel uit criminele handen en maakt controle op kwaliteit mogelijk.",
-                    "B": "We stoppen het wietexperiment. Coffeeshops worden gesloten. Het gedoogbeleid heeft geleid tot meer criminaliteit en overlast.",
-                    "C": "We wachten de resultaten van het wietexperiment af voordat we een definitief besluit nemen. Regulering moet samengaan met preventie."
+                    "A": "We legaliseren de hele keten, van productie tot verkoop. Dit haalt de handel uit criminele handen.",
+                    "B": "We stoppen het wietexperiment. Coffeeshops worden gesloten. Het gedoogbeleid heeft geleid tot meer criminaliteit.",
+                    "C": "We wachten de resultaten van het wietexperiment af voordat we een definitief besluit nemen."
                 },
-                "scores": {
-                    "A": ["SP", "D66", "GroenLinks-PvdA", "Volt", "PvdD"],
-                    "B": ["PVV", "CDA", "CU"],
-                    "C": ["VVD", "NSC", "BBB", "JA21"]
-                }
+                "scores": { "A": ["SP", "D66", "GroenLinks-PvdA", "Volt", "PvdD"], "B": ["PVV", "CDA", "CU"], "C": ["VVD", "NSC", "BBB", "JA21"] }
             },
             {
-                "question": "25. Wat is de beste aanpak voor de problemen in de jeugdzorg?",
+                "question": "17. Moet euthanasie bij voltooid leven wettelijk worden geregeld?",
                 "options": {
-                    "A": "We moeten het systeem veranderen, niet het kind. Investeer in preventie, gezinsondersteuning en de pedagogische basis op school en in de wijk.",
-                    "B": "Specialistische jeugdzorg moet weer landelijk of regionaal worden georganiseerd. De decentralisatie naar gemeenten heeft geleid tot versnippering.",
-                    "C": "Er moet een einde komen aan de marktwerking en winstbejag in de jeugdzorg. Publiek geld moet naar de zorg voor kinderen gaan, niet naar aandeelhouders."
+                    "A": "Ja, mensen moeten zelf kunnen beslissen over een waardig levenseinde.",
+                    "B": "Nee, de huidige euthanasiewet is voldoende. Een 'voltooid leven'-wet kan de waarde van het leven uithollen."
                 },
-                "scores": {
-                    "A": ["D66", "CU", "GroenLinks-PvdA", "Volt"],
-                    "B": ["CDA", "NSC", "BBB", "DENK", "PvdD"],
-                    "C": ["SP", "VVD", "JA21"]
-                }
+                "scores": { "A": ["D66", "Volt", "PvdD", "VVD"], "B": ["CU", "CDA", "NSC", "SP", "BBB", "JA21", "DENK"] }
             },
             {
-                "question": "26. Moet euthanasie bij voltooid leven wettelijk worden geregeld?",
+                "question": "18. Hoe moet omgegaan worden met de wolf in Nederland?",
                 "options": {
-                    "A": "Ja, mensen moeten zelf kunnen beslissen over een waardig levenseinde. We steunen een wettelijke regeling voor hulp bij een voltooid leven.",
-                    "B": "Nee, de huidige euthanasiewet is voldoende. We zijn tegen een 'voltooid leven'-wet omdat dit de waarde van het leven kan uithollen."
+                    "A": "De wolf is een verrijking van de natuur en moet strikt beschermd blijven.",
+                    "B": "Er is geen ruimte voor de wolf. We moeten streven naar een nulstand buiten aangewezen leefgebieden.",
+                    "C": "De wolf mag blijven, maar de populatie moet actief worden beheerd. Afschot mag geen taboe zijn."
                 },
-                "scores": {
-                    "A": ["D66", "Volt", "PvdD", "VVD"],
-                    "B": ["CU", "CDA", "NSC", "SP", "BBB", "JA21", "DENK"]
-                }
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "Volt"], "B": ["BBB", "FvD", "PVV"], "C": ["NSC", "CDA", "VVD", "D66", "JA21", "SP"] }
             },
             {
-                "question": "27. Wat is uw visie op het gebruik van Engels in het hoger onderwijs?",
+                "question": "19. Wat moet de rol van de overheid zijn in de economie?",
                 "options": {
-                    "A": "Nederlands moet de voertaal zijn. De wildgroei aan Engelstalige opleidingen trekt te veel internationale studenten aan, wat druk legt op huisvesting en kwaliteit.",
-                    "B": "Internationalisering is waardevol. Onderwijsinstellingen moeten zelf de ruimte hebben om te bepalen welke opleidingen Engelstalig zijn.",
-                    "C": "Het aantal Engelstalige opleidingen moet beperkt worden, maar we moeten selectief zijn. Voor studies in tekortsectoren blijft Engels belangrijk."
+                    "A": "De overheid moet een sterke, sturende rol hebben. Publieke voorzieningen zoals energie moeten in publieke handen zijn.",
+                    "B": "De overheid moet zo klein mogelijk zijn, met minder regels en lagere belastingen. Ze moet de ondernemer vrijheid geven.",
+                    "C": "De overheid moet betrouwbaar en dienstbaar zijn, met oog voor de menselijke maat en de kracht van gemeenschappen."
                 },
-                "scores": {
-                    "A": ["FvD", "NSC", "BBB", "CDA", "SP", "PVV"],
-                    "B": ["Volt"],
-                    "C": ["D66", "VVD", "JA21", "GroenLinks-PvdA", "CU"]
-                }
+                "scores": { "A": ["SP", "GroenLinks-PvdA", "PvdD", "Volt", "DENK"], "B": ["VVD", "FvD", "JA21"], "C": ["NSC", "CDA", "BBB", "CU"] }
             },
             {
-                "question": "28. Hoe moet omgegaan worden met de wolf in Nederland?",
-                "options": {
-                    "A": "De wolf is een verrijking van de natuur en moet strikt beschermd blijven. Veehouders moeten worden geholpen met preventieve maatregelen.",
-                    "B": "Er is geen ruimte voor de wolf in ons dichtbevolkte land. Veiligheid voor mens en dier staat voorop. We streven naar een nulstand buiten aangewezen leefgebieden.",
-                    "C": "De wolf mag blijven, maar de populatie moet actief worden beheerd. Dat betekent dat afschot van probleemwolven geen taboe mag zijn."
-                },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "Volt"],
-                    "B": ["BBB", "FvD"],
-                    "C": ["NSC", "CDA", "VVD", "D66", "JA21", "SP"]
-                }
-            },
-            {
-                "question": "29. Wat is de beste aanpak van de georganiseerde misdaad?",
-                "options": {
-                    "A": "Een keiharde aanpak. We voeren minimumstraffen in, breiden de kroongetuigenregeling uit en pakken crimineel vermogen af, desnoods naar Italiaans anti-maffia model.",
-                    "B": "Naast een harde aanpak moeten we investeren in preventie, kansengelijkheid en wijkveiligheid. We moeten voorkomen dat jongeren in de criminaliteit belanden."
-                },
-                "scores": {
-                    "A": ["VVD", "JA21", "PVV", "BBB", "CDA", "NSC"],
-                    "B": ["D66", "GroenLinks-PvdA", "SP", "PvdD", "Volt", "CU", "DENK"]
-                }
-            },
-            {
-                "question": "30. Moet er een wettelijk recht komen om offline te zijn buiten werktijd?",
-                "options": {
-                    "A": "Ja, het 'recht op onbereikbaarheid' moet wettelijk worden vastgelegd om werknemers te beschermen tegen een doorgeslagen werkdruk.",
-                    "B": "Nee, dit is een zaak tussen werkgever en werknemer. De overheid moet zich hier niet mee bemoeien en vertrouwen op de eigen verantwoordelijkheid van mensen."
-                },
-                "scores": {
-                    "A": ["SP", "GroenLinks-PvdA", "PvdD", "Volt"],
-                    "B": ["VVD", "BBB", "CDA", "NSC", "D66", "JA21", "CU", "PVV", "FvD", "DENK"]
-                }
-            },
-            {
-                "question": "31. Hoe kijkt u naar de rol van de vakbonden?",
-                "options": {
-                    "A": "Sterke, onafhankelijke vakbonden zijn essentieel voor een eerlijke arbeidsmarkt. We moeten hun positie versterken.",
-                    "B": "Vakbonden hebben een rol in het overlegmodel, maar de overheid moet niet blindelings hun eisen overnemen. Flexibiliteit is ook belangrijk."
-                },
-                "scores": {
-                    "A": ["SP", "GroenLinks-PvdA", "PvdD", "CU"],
-                    "B": ["VVD", "D66", "NSC", "CDA", "BBB", "JA21", "PVV", "FvD", "Volt", "DENK"]
-                }
-            },
-            {
-                "question": "32. Wat moet de rol van de overheid zijn in de economie?",
-                "options": {
-                    "A": "De overheid moet een sterke, sturende rol hebben. Publieke voorzieningen zoals energie moeten in publieke handen zijn en marktwerking moet worden teruggedrongen.",
-                    "B": "De overheid moet zo klein mogelijk zijn, met minder regels en lagere belastingen. Ze moet zich richten op kerntaken en de ondernemer vrijheid geven.",
-                    "C": "De overheid moet betrouwbaar en dienstbaar zijn, met oog voor de menselijke maat en de kracht van gemeenschappen. Ze moet ondernemers ondersteunen en publieke waarden bewaken."
-                },
-                "scores": {
-                    "A": ["SP", "GroenLinks-PvdA", "PvdD", "Volt", "DENK"],
-                    "B": ["VVD", "FvD", "JA21"],
-                    "C": ["NSC", "CDA", "BBB", "CU"]
-                }
-            },
-            {
-                "question": "33. Hoe moet de overheid omgaan met tradities zoals Sinterklaas?",
+                "question": "20. Hoe moet de overheid omgaan met tradities zoals Sinterklaas?",
                 "options": {
                     "A": "Sinterklaas moet een feest voor iedereen zijn. Dat betekent dat Zwarte Piet, als racistische karikatuur, overal moet worden afgeschaft.",
-                    "B": "De overheid moet zich niet bemoeien met tradities. Sinterklaas moet gevierd worden mét Zwarte Piet. Dit is onderdeel van onze cultuur.",
+                    "B": "De overheid moet zich niet bemoeien met tradities. Sinterklaas moet gevierd worden mét Zwarte Piet.",
                     "C": "Lokale tradities en gebruiken, zoals sinterklaasintochten, moeten worden gekoesterd en verdienen steun."
                 },
-                "scores": {
-                    "A": ["GroenLinks-PvdA", "PvdD", "Volt", "D66", "DENK", "SP"],
-                    "B": ["PVV", "FvD"],
-                    "C": ["BBB", "JA21", "CDA", "VVD", "NSC", "CU"]
-                }
+                "scores": { "A": ["GroenLinks-PvdA", "PvdD", "Volt", "D66", "DENK", "SP"], "B": ["PVV", "FvD"], "C": ["BBB", "JA21", "CDA", "VVD", "NSC", "CU"] }
             },
             {
-                "question": "34. Wat is de beste aanpak voor het lerarentekort?",
+                "question": "21. Hoe moet de overheid omgaan met de macht van grote techbedrijven?",
+                "options": {
+                    "A": "De overheid moet burgers beschermen. We moeten investeren in Europese, open-source alternatieven en privacy streng waarborgen.",
+                    "B": "We moeten ondernemers vrijlaten en niet te veel regels opleggen. De focus moet liggen op innovatie en economische groei.",
+                    "C": "De overheid moet burgers beschermen met duidelijke regels, maar tegelijkertijd de kansen van digitalisering omarmen."
+                },
+                "scores": { "A": ["Volt", "D66", "PvdD", "GroenLinks-PvdA", "SP", "DENK"], "B": ["VVD", "FvD", "JA21"], "C": ["CDA", "NSC", "BBB", "CU"] }
+            },
+            {
+                "question": "22. De hypotheekrenteaftrek moet wat u betreft...",
+                "options": {
+                    "A": "versneld worden afgebouwd. De opbrengsten gebruiken we voor betaalbare woningen en lastenverlichting.",
+                    "B": "niet verder worden beperkt en zeker niet worden afgeschaft. Het beschermt het eigenwoningbezit.",
+                    "C": "geleidelijk worden afgebouwd, waarbij de opbrengsten volledig worden teruggesluisd via een verlaging van de inkomstenbelasting."
+                },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "Volt"], "B": ["VVD", "PVV", "JA21", "FvD", "BBB"], "C": ["CDA", "D66", "NSC", "CU", "SP"] }
+            },
+            {
+                "question": "23. Wat is uw standpunt over ontwikkelingssamenwerking?",
+                "options": {
+                    "A": "Het budget moet omhoog naar de internationale norm van 0,7% van het BNI. Hulp moet gericht zijn op het wegnemen van grondoorzaken van armoede.",
+                    "B": "Ontwikkelingshulp is mislukt en moet volledig worden afgeschaft. Het geld kan beter in Nederland worden besteed.",
+                    "C": "Hulp moet gericht zijn op stabiliteit aan de randen van Europa en het tegengaan van migratiestromen in het Nederlands belang."
+                },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "CU", "Volt", "D66", "DENK"], "B": ["PVV", "FvD"], "C": ["JA21", "VVD", "NSC", "CDA", "BBB", "SP"] }
+            },
+            {
+                "question": "24. Wat is uw visie op vliegreizen voor vakantie en werk?",
+                "options": {
+                    "A": "De luchtvaart moet fors krimpen. We verbieden privévluchten en korte afstandsvluchten en voeren een progressieve vliegtaks in.",
+                    "B": "Luchthavens als Schiphol zijn cruciaal en moeten kunnen groeien. De focus ligt op technologische innovatie, niet op krimp. De vliegtaks wordt afgeschaft.",
+                    "C": "Groei is geen doel op zich. De luchtvaart moet opereren binnen duidelijke grenzen voor klimaat, milieu en gezondheid."
+                },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "SP", "Volt"], "B": ["PVV", "FvD", "DENK", "BBB"], "C": ["CDA", "VVD", "NSC", "D66", "JA21", "CU"] }
+            },
+            {
+                "question": "25. Het minimumloon moet...",
+                "options": {
+                    "A": "omhoog naar € 18 per uur. De daaraan gekoppelde uitkeringen zoals de AOW stijgen mee.",
+                    "B": "niet verder stijgen, omdat dit de concurrentiepositie van bedrijven schaadt en tot hogere prijzen kan leiden.",
+                    "C": "stapsgewijs omhoog, maar dit moet gekoppeld zijn aan een stelselvernieuwing om de loonkosten voor werkgevers te compenseren."
+                },
+                "scores": { "A": ["SP", "GroenLinks-PvdA", "PvdD", "DENK"], "B": ["VVD", "JA21", "FvD"], "C": ["NSC", "CU", "CDA"] }
+            },
+            {
+                "question": "26. Wat is de beste aanpak voor het lerarentekort?",
                 "options": {
                     "A": "Door de werkdruk te verlagen met kleinere klassen, hogere salarissen en minder administratieve lasten.",
                     "B": "Door het aantrekkelijker te maken voor zij-instromers en door ervaren vakmensen uit de praktijk voor de klas te halen.",
-                    "C": "Door deeltijdwerk te ontmoedigen en contractuitbreiding te stimuleren. Met een meerurenbonus en goede arbeidsvoorwaarden."
+                    "C": "Door deeltijdwerk te ontmoedigen en contractuitbreiding te stimuleren met een meerurenbonus."
                 },
-                "scores": {
-                    "A": ["SP", "GroenLinks-PvdA", "PvdD", "CU", "DENK"],
-                    "B": ["NSC", "CDA", "D66", "Volt"],
-                    "C": ["VVD", "BBB", "JA21"]
-                }
+                "scores": { "A": ["SP", "GroenLinks-PvdA", "PvdD", "CU", "DENK"], "B": ["NSC", "CDA", "D66", "Volt"], "C": ["VVD", "BBB", "JA21"] }
             },
             {
-                "question": "35. De hypotheekrenteaftrek moet wat u betreft...",
+                "question": "27. De Eerste Kamer moet wat u betreft...",
                 "options": {
-                    "A": "versneld worden afgebouwd. De opbrengsten gebruiken we voor betaalbare woningen en lastenverlichting.",
-                    "B": "niet verder worden beperkt en zeker niet worden afgeschaft. Het beschermt het eigenwoningbezit.",
-                    "C": "geleidelijk worden afgebouwd, waarbij de opbrengsten volledig worden teruggesluisd via een verlaging van de inkomstenbelasting."
+                    "A": "worden afgeschaft. Het is een ondemocratisch orgaan dat de wil van de direct gekozen Tweede Kamer kan blokkeren.",
+                    "B": "worden hervormd om de rol als 'Kamer van bezinning' te versterken, bijvoorbeeld door een langere zittingsduur.",
+                    "C": "blijven functioneren zoals nu, als een belangrijke controle op de kwaliteit van wetgeving."
                 },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "Volt"],
-                    "B": ["VVD", "PVV", "JA21", "FvD", "BBB"],
-                    "C": ["CDA", "D66", "NSC", "CU", "SP"]
-                }
+                "scores": { "A": ["FvD", "PVV", "D66", "DENK"], "B": ["CDA", "GroenLinks-PvdA", "SP"], "C": ["VVD", "BBB", "NSC", "CU", "JA21", "PvdD", "Volt"] }
             },
             {
-                "question": "36. Wat is uw standpunt over het koningshuis?",
+                "question": "28. Wat is uw standpunt over de jacht?",
                 "options": {
-                    "A": "Het koningshuis is onmiskenbaar verbonden met onze geschiedenis en dat moeten we koesteren. De koning krijgt weer een rol bij de kabinetsformatie.",
-                    "B": "Nederland moet een republiek worden. We schaffen de monarchie af via een referendum.",
-                    "C": "De koning krijgt een puur ceremoniële rol en gaat belasting betalen, net als iedereen."
+                    "A": "De jacht voor plezier moet verboden worden. Dieren moeten zo veel mogelijk met rust worden gelaten.",
+                    "B": "Jacht en faunabeheer zijn een noodzakelijk onderdeel van goed natuuronderhoud en schadepreventie.",
+                    "C": "Er moet een einde komen aan de hobbyjacht. Jagersclubs (Faunabeheereenheden) worden afgeschaft."
                 },
-                "scores": {
-                    "A": ["BBB", "CDA", "JA21", "PVV", "VVD"],
-                    "B": ["SP", "FvD"],
-                    "C": ["PvdD", "GroenLinks-PvdA", "D66", "Volt", "NSC"]
-                }
+                "scores": { "A": ["PvdD", "SP"], "B": ["BBB", "JA21", "CDA", "VVD", "NSC", "FvD"], "C": ["PvdD", "GroenLinks-PvdA"] }
             },
             {
-                "question": "37. Moet er een verbod komen op ongerichte reclame in de openbare ruimte?",
+                "question": "29. Wat verwacht u van nieuwkomers in Nederland?",
                 "options": {
-                    "A": "Ja, reclame voor consumptiegoederen in de openbare ruimte moet stoppen. Het moedigt overconsumptie aan en is schadelijk voor het welzijn.",
-                    "B": "Nee, dit is een onnodige beperking van de commerciële vrijheid. Ondernemers moeten de ruimte hebben om hun producten te promoten."
+                    "A": "Ze moeten zich aanpassen aan de Nederlandse cultuur en waarden. De taal leren en onze normen respecteren is niet onderhandelbaar.",
+                    "B": "We moeten stoppen met het label 'integratie' voor mensen die hier opgroeien en uitgaan van wederzijdse acceptatie.",
+                    "C": "Iedereen, ook nieuwkomers, moet onze vrije, democratische waarden onderschrijven. Wie onze wetten afwijst, heeft hier niets te zoeken."
                 },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA"],
-                    "B": ["VVD", "BBB", "JA21", "PVV", "FvD", "CDA", "NSC", "CU", "D66", "Volt", "DENK", "SP"]
-                }
+                "scores": { "A": ["BBB", "PVV", "VVD", "NSC", "CDA", "JA21", "CU", "FvD"], "B": ["DENK"], "C": ["D66", "GroenLinks-PvdA", "Volt"] }
             },
             {
-                "question": "38. Hoe moet de overheid omgaan met de macht van grote techbedrijven?",
+                "question": "30. Wat is de beste aanpak voor de georganiseerde misdaad?",
                 "options": {
-                    "A": "De overheid moet burgers beschermen. We moeten investeren in Europese, open-source alternatieven en privacy streng waarborgen.",
-                    "B": "We moeten burgers en ondernemers vrijlaten en niet te veel regels opleggen. De focus moet liggen op innovatie en economische groei.",
-                    "C": "De overheid moet burgers beschermen met duidelijke regels, maar tegelijkertijd de kansen van digitalisering omarmen. Er is een balans nodig tussen vrijheid en veiligheid."
+                    "A": "Een keiharde aanpak met minimumstraffen, een uitgebreide kroongetuigenregeling en het afpakken van crimineel vermogen.",
+                    "B": "Naast een harde aanpak moeten we vooral investeren in preventie, kansengelijkheid en wijkveiligheid om te voorkomen dat jongeren in de criminaliteit belanden."
                 },
-                "scores": {
-                    "A": ["Volt", "D66", "PvdD", "GroenLinks-PvdA", "SP", "DENK"],
-                    "B": ["VVD", "FvD", "JA21"],
-                    "C": ["CDA", "NSC", "BBB", "CU"]
-                }
-            },
-            {
-                "question": "39. Wat is uw standpunt over ontwikkelingssamenwerking?",
-                "options": {
-                    "A": "Het budget moet omhoog naar de internationale norm van 0,7% van het BNI. Hulp moet gericht zijn op het wegnemen van grondoorzaken van armoede en migratie.",
-                    "B": "Ontwikkelingshulp is mislukt en moet volledig worden afgeschaft. Het geld kan beter in Nederland worden besteed.",
-                    "C": "Hulp moet gericht zijn op stabiliteit aan de randen van Europa, het tegengaan van migratiestromen en het ondersteunen van lokale initiatieven in het Nederlands belang."
-                },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "CU", "Volt", "D66", "DENK"],
-                    "B": ["PVV", "FvD"],
-                    "C": ["JA21", "VVD", "NSC", "CDA", "BBB"]
-                }
-            },
-            {
-                "question": "40. De hypotheekrenteaftrek moet wat u betreft...",
-                "options": {
-                    "A": "versneld worden afgebouwd. De opbrengsten gebruiken we voor betaalbare woningen en lastenverlichting.",
-                    "B": "niet verder worden beperkt en zeker niet worden afgeschaft. Het beschermt het eigenwoningbezit.",
-                    "C": "geleidelijk worden afgebouwd, waarbij de opbrengsten volledig worden teruggesluisd via een verlaging van de inkomstenbelasting."
-                },
-                "scores": {
-                    "A": ["PvdD", "GroenLinks-PvdA", "Volt"],
-                    "B": ["VVD", "PVV", "JA21", "FvD", "BBB"],
-                    "C": ["CDA", "D66", "NSC", "CU", "SP"]
-                }
+                "scores": { "A": ["VVD", "JA21", "PVV", "BBB", "CDA", "NSC"], "B": ["D66", "GroenLinks-PvdA", "SP", "PvdD", "Volt", "CU", "DENK"] }
             }
         ];
         
         const partyDescriptions = {
-            "PvdD": "U plaatst de belangen van een leefbare Aarde, dieren en natuur radicaal voorop. Dit betekent een snelle en forse krimp van de vee-industrie, een einde aan fossiele subsidies en een verbod op kernenergie [1-3]. U bent voorstander van het verankeren van dierenrechten en rechten voor de natuur in de Grondwet [4, 5]. U kiest voor een eerlijke verdeling van welvaart, met hogere belastingen op grote vermogens en vervuiling [6, 7], en een humaan migratiebeleid [8].",
-            "BBB": "U staat pal voor de Nederlandse boeren, tuinders en vissers, die u ziet als de ruggengraat van onze voedselvoorziening en het landschap [9, 10]. U kiest voor een nuchtere aanpak van klimaat- en stikstofproblemen ('Wie rood staat, kan niet groen doen') en verzet zich tegen gedwongen uitkoop van boeren [11, 12]. U hecht veel waarde aan de regio, 'noaberschap', Nederlandse tradities en een overheid die dichtbij de mensen staat [13, 14].",
-            "CDA": "U kiest voor een fatsoenlijk land, gebouwd op vertrouwen, verantwoordelijkheid en een betrokken samenleving [15, 16]. U zoekt een balans tussen een sterke, duurzame economie en een zorgzame gemeenschap [17]. U pleit voor een streng maar werkbaar migratiebeleid, een eenvoudiger belastingstelsel en het behoud van de hypotheekrenteaftrek in aangepaste vorm [18, 19].",
-            "CU": "U benadert de politiek vanuit christelijk-sociale waarden, met de nadruk op gemeenschappen, het gezin en de bescherming van het (ongeboren) leven [20, 21]. U bent voor ambitieus klimaatbeleid, zorg voor de schepping en een humaan migratiebeleid, maar ook voor een streng en realistisch asielbeleid [22, 23]. Financieel wilt u gezinnen ondersteunen en de grootste vermogens extra belasten [24, 25].",
-            "D66": "U streeft naar een progressief en vrij Nederland in een sterk en verenigd Europa [26]. U bent voor ambitieuze klimaatdoelen, meer investeringen in schone energie en een toekomst voor zowel boeren als natuur [27, 28]. U hecht veel waarde aan gelijke kansen, LHBTIQA+-rechten en een sterke, weerbare democratie [26, 29]. U wilt de woningnood doorbreken met de bouw van tien nieuwe steden [30].",
-            "DENK": "De strijd tegen discriminatie en racisme is voor u een topprioriteit [31]. U pleit voor wederzijdse acceptatie in plaats van eenzijdige aanpassing en wilt dat het woord 'integratie' wordt afgeschaft voor wie hier is opgegroeid [32, 33]. U wilt de koopkracht verbeteren door de btw op boodschappen te verlagen en het eigen risico af te schaffen [34, 35]. Internationaal komt u op voor de rechten van de Palestijnen [36].",
-            "FvD": "U wilt Nederland weer soeverein, vrij en trots maken [37]. Dit betekent een Nexit, het opzeggen van internationale verdragen en het stoppen met alle klimaat- en stikstofbeleid [38-40]. U pleit voor het heropenen van het Groninger gasveld voor betaalbare energie en een radicale verlaging van de belastingen [41, 42]. U wilt meer directe democratie via bindende referenda [43].",
-            "GroenLinks-PvdA": "U gelooft in solidariteit en het eerlijk delen van welvaart in een groene en duurzame toekomst [44]. U wilt de klimaatcrisis ambitieus aanpakken, grote vervuilers laten betalen en de fossiele subsidies afschaffen [45, 46]. U streeft naar een 'Nieuwe Verzorgingsstaat' met hogere lonen, betaalbare woningen en een sterke publieke sector [47, 48]. U staat voor een humaan migratiebeleid en een sterke, sociale Europese Unie [49, 50].",
-            "JA21": "U kiest voor een conservatief-liberale koers met een focus op veiligheid, welvaart en grenzen [51]. U wilt migratie sterk beperken, met als doel een asielstop, en internationale verdragen herzien [52, 53]. U bent voor een kleinere overheid, lagere belastingen en een harde aanpak van criminaliteit [54, 55]. Het beschermen van de eigen woning tegen extra belastingen is voor u belangrijk [56].",
-            "PVV": "U wilt de Nederlander weer op 1 zetten [57]. Een totale asielstop en het sluiten van de grenzen is uw topprioriteit, desnoods door verdragen op te zeggen [58, 59]. U wilt de Klimaatwet intrekken, de btw op energie en boodschappen verlagen en het eigen risico afschaffen [60-62]. U wilt de Nederlandse cultuur en tradities, inclusief Zwarte Piet, beschermen [63].",
-            "SP": "U streeft naar een 'super sociaal' Nederland, waarin de belangen van de werkende klasse voorop staan [64]. U wilt een einde aan marktwerking in de publieke sector: het eigen risico moet af, wonen moet een recht zijn en het openbaar vervoer wordt gratis [65-67]. U pleit voor een forse verhoging van het minimumloon naar €18 en een sociale klimaatrevolutie [68, 69].",
-            "NSC": "U wilt de basis op orde brengen met een betrouwbare overheid en bestaanszekerheid [70, 71]. U kiest voor een streng en realistisch migratiebeleid op alle vlakken en een oplossing voor de stikstofcrisis die boeren perspectief biedt, zonder gedwongen uitkoop [72, 73]. Een eenvoudiger en eerlijker belasting- en toeslagenstelsel en het oplossen van de wooncrisis zijn voor u cruciale punten [74, 75].",
-            "VVD": "U staat voor een land met vrijheid, veiligheid en welvaart [76]. U wilt radicale economische groei, een kleinere overheid en u beschermt eigenwoningbezit [77-79]. De partij pleit voor een strenger asielstelsel om meer grip op migratie te krijgen en voor een sterke, innovatieve economie met een aantrekkelijk vestigingsklimaat [80, 81].",
-            "Volt": "U gelooft in een sterk en federaal Europa als antwoord op de grote uitdagingen van deze tijd [82]. U pleit voor een Europese krijgsmacht, een gezamenlijk en ambitieus klimaatbeleid en een humaan Europees asielbeleid [83-85]. U wilt investeren in een 'Silicon Europa' om technologisch onafhankelijk te zijn en bent voorstander van een basisinkomen [86, 87]."
+            "PvdD": "U plaatst de belangen van een leefbare Aarde, dieren en natuur radicaal voorop. Dit betekent een snelle en forse krimp van de vee-industrie, een einde aan fossiele subsidies en een verbod op kernenergie. U bent voorstander van het verankeren van dierenrechten en rechten voor de natuur in de Grondwet. U kiest voor een eerlijke verdeling van welvaart, met hogere belastingen op grote vermogens en vervuiling, en een humaan migratiebeleid.",
+            "BBB": "U staat pal voor de Nederlandse boeren, tuinders en vissers, die u ziet als de ruggengraat van onze voedselvoorziening en het landschap. U kiest voor een nuchtere aanpak van klimaat- en stikstofproblemen ('Wie rood staat, kan niet groen doen') en verzet zich tegen gedwongen uitkoop van boeren. U hecht veel waarde aan de regio, 'noaberschap', Nederlandse tradities en een overheid die dichtbij de mensen staat.",
+            "CDA": "U kiest voor een fatsoenlijk land, gebouwd op vertrouwen, verantwoordelijkheid en een betrokken samenleving. U zoekt een balans tussen een sterke, duurzame economie en een zorgzame gemeenschap. U pleit voor een streng maar werkbaar migratiebeleid, een eenvoudiger belastingstelsel en het behoud van de hypotheekrenteaftrek in aangepaste vorm.",
+            "CU": "U benadert de politiek vanuit christelijk-sociale waarden, met de nadruk op gemeenschappen, het gezin en de bescherming van het (ongeboren) leven. U bent voor ambitieus klimaatbeleid, zorg voor de schepping en een humaan migratiebeleid, maar ook voor een streng en realistisch asielbeleid. Financieel wilt u gezinnen ondersteunen en de grootste vermogens extra belasten.",
+            "D66": "U streeft naar een progressief en vrij Nederland in een sterk en verenigd Europa. U bent voor ambitieuze klimaatdoelen, meer investeringen in schone energie en een toekomst voor zowel boeren als natuur. U hecht veel waarde aan gelijke kansen, LHBTIQA+-rechten en een sterke, weerbare democratie. U wilt de woningnood doorbreken met de bouw van tien nieuwe steden.",
+            "DENK": "De strijd tegen discriminatie en racisme is voor u een topprioriteit. U pleit voor wederzijdse acceptatie in plaats van eenzijdige aanpassing en wilt dat het woord 'integratie' wordt afgeschaft voor wie hier is opgegroeid. U wilt de koopkracht verbeteren door de btw op boodschappen te verlagen en het eigen risico af te schaffen. Internationaal komt u op voor de rechten van de Palestijnen.",
+            "FvD": "U wilt Nederland weer soeverein, vrij en trots maken. Dit betekent een Nexit, het opzeggen van internationale verdragen en het stoppen met alle klimaat- en stikstofbeleid. U pleit voor het heropenen van het Groninger gasveld voor betaalbare energie en een radicale verlaging van de belastingen. U wilt meer directe democratie via bindende referenda.",
+            "GroenLinks-PvdA": "U gelooft in solidariteit en het eerlijk delen van welvaart in een groene en duurzame toekomst. U wilt de klimaatcrisis ambitieus aanpakken, grote vervuilers laten betalen en de fossiele subsidies afschaffen. U streeft naar een 'Nieuwe Verzorgingsstaat' met hogere lonen, betaalbare woningen en een sterke publieke sector. U staat voor een humaan migratiebeleid en een sterke, sociale Europese Unie.",
+            "JA21": "U kiest voor een conservatief-liberale koers met een focus op veiligheid, welvaart en grenzen. U wilt migratie sterk beperken, met als doel een asielstop, en internationale verdragen herzien. U bent voor een kleinere overheid, lagere belastingen en een harde aanpak van criminaliteit. Het beschermen van de eigen woning tegen extra belastingen is voor u belangrijk.",
+            "PVV": "U wilt de Nederlander weer op 1 zetten. Een totale asielstop en het sluiten van de grenzen is uw topprioriteit, desnoods door verdragen op te zeggen. U wilt de Klimaatwet intrekken, de btw op energie en boodschappen verlagen en het eigen risico afschaffen. U wilt de Nederlandse cultuur en tradities, inclusief Zwarte Piet, beschermen en de invloed van de islam terugdringen.",
+            "SP": "U streeft naar een 'super sociaal' Nederland, waarin de belangen van de werkende klasse voorop staan. U wilt een einde aan marktwerking in de publieke sector: het eigen risico moet af, wonen moet een recht zijn en het openbaar vervoer wordt gratis. U pleit voor een forse verhoging van het minimumloon naar €18 en een sociale klimaatrevolutie.",
+            "NSC": "U wilt de basis op orde brengen met een betrouwbare overheid en bestaanszekerheid. U kiest voor een streng en realistisch migratiebeleid op alle vlakken en een oplossing voor de stikstofcrisis die boeren perspectief biedt, zonder gedwongen uitkoop. Een eenvoudiger en eerlijker belasting- en toeslagenstelsel en het oplossen van de wooncrisis zijn voor u cruciale punten.",
+            "VVD": "U staat voor een land met vrijheid, veiligheid en welvaart. U wilt radicale economische groei, een kleinere overheid en u beschermt eigenwoningbezit. De partij pleit voor een strenger asielstelsel om meer grip op migratie te krijgen en voor een sterke, innovatieve economie met een aantrekkelijk vestigingsklimaat.",
+            "Volt": "U gelooft in een sterk en federaal Europa als antwoord op de grote uitdagingen van deze tijd. U pleit voor een Europese krijgsmacht, een gezamenlijk en ambitieus klimaatbeleid en een humaan Europees asielbeleid. U wilt investeren in een 'Silicon Europa' om technologisch onafhankelijk te zijn en bent voorstander van een basisinkomen."
         };
-
+        
         let currentQuestionIndex = 0;
         const userAnswers = {};
 
@@ -795,6 +556,7 @@
             questionTextEl.textContent = questionData.question;
             optionsContainerEl.innerHTML = '';
 
+            // Load A, B, C options
             for (const key in questionData.options) {
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'option';
@@ -826,6 +588,32 @@
 
                 optionsContainerEl.appendChild(optionDiv);
             }
+
+            // Add "Don't know / No opinion" option
+            const neutralOptionDiv = document.createElement('div');
+            neutralOptionDiv.className = 'option';
+            const neutralRadio = document.createElement('input');
+            neutralRadio.type = 'radio';
+            neutralRadio.name = 'option';
+            neutralRadio.value = 'X'; // Neutral value
+            neutralRadio.id = 'option-X';
+            if (userAnswers[currentQuestionIndex] === 'X') {
+                neutralRadio.checked = true;
+                neutralOptionDiv.classList.add('selected');
+            }
+            const neutralLabel = document.createElement('label');
+            neutralLabel.htmlFor = 'option-X';
+            neutralLabel.textContent = 'Weet ik niet / Geen mening';
+            neutralOptionDiv.appendChild(neutralRadio);
+            neutralOptionDiv.appendChild(neutralLabel);
+            neutralOptionDiv.addEventListener('click', () => {
+                neutralRadio.checked = true;
+                saveAnswer();
+                document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+                neutralOptionDiv.classList.add('selected');
+            });
+            optionsContainerEl.appendChild(neutralOptionDiv);
+
             updateButtonStates();
         }
         
@@ -851,6 +639,9 @@
 
             for (const qIndex in userAnswers) {
                 const answer = userAnswers[qIndex];
+                if (answer === 'X') { // Skip scoring for "Don't know"
+                    continue;
+                }
                 const scoringParties = quizData[qIndex].scores[answer];
                 if (scoringParties) {
                     scoringParties.forEach(party => {
@@ -876,6 +667,9 @@
                 const bestMatchPartyName = sortedScores;
                 document.getElementById('best-match-party').textContent = `Uw beste match: ${bestMatchPartyName}`;
                 document.getElementById('best-match-description').textContent = partyDescriptions[bestMatchPartyName] || "Geen beschrijving beschikbaar.";
+            } else {
+                document.getElementById('best-match-party').textContent = "Geen duidelijke match gevonden.";
+                document.getElementById('best-match-description').textContent = "U heeft mogelijk te veel neutrale antwoorden gegeven om een match te bepalen.";
             }
         }
 
