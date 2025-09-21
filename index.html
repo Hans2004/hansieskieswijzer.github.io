@@ -1,0 +1,521 @@
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politieke Keuzewijzer Quiz</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --light-gray: #f4f6f8;
+            --dark-gray: #555;
+            --text-color: #333;
+            --border-color: #ddd;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            color: var(--text-color);
+        }
+        
+        #question-counter {
+            text-align: center;
+            font-weight: bold;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .option:hover {
+            background-color: #eef5ff;
+        }
+        
+        .option.selected {
+             background-color: #eef5ff;
+             border-color: var(--secondary-color);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+
+        .option label {
+            cursor: pointer;
+            line-height: 1.5;
+            vertical-align: middle;
+            width: calc(100% - 30px);
+            display: inline-block;
+        }
+
+        .navigation-controls, .action-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .action-controls {
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, opacity 0.2s;
+            flex-grow: 1;
+        }
+        
+        #back-btn, #next-btn {
+            background-color: var(--dark-gray);
+        }
+
+        #reset-btn {
+            background-color: #dc3545;
+        }
+
+        #submit-btn {
+            background-color: #28a745;
+        }
+        
+        #restart-btn-results {
+            display: block;
+            width: 50%;
+            margin: 30px auto 0;
+            padding: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--white);
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:not(:disabled):hover {
+            opacity: 0.85;
+        }
+        
+        #restart-btn-results:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        #results-container h2 {
+            font-size: 1.8em;
+        }
+        
+        #score-list {
+            margin: 20px 0;
+            padding: 0;
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        #score-list li {
+            background-color: var(--light-gray);
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #best-match {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border: 1px solid #b3e0ff;
+            border-radius: 8px;
+        }
+        
+        #best-match h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            .navigation-controls, .action-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="quiz-container">
+            <h1>Politieke Keuzewijzer</h1>
+            <p id="question-counter"></p>
+            <h2 id="question-text"></h2>
+            <div id="options-container"></div>
+            <div class="navigation-controls">
+                <button id="back-btn" class="btn">Terug</button>
+                <button id="next-btn" class="btn">Volgende</button>
+            </div>
+            <div class="action-controls">
+                <button id="reset-btn" class="btn">Reset</button>
+                <button id="submit-btn" class="btn" disabled>Versturen</button>
+            </div>
+        </div>
+
+        <div id="results-container" style="display:none;">
+            <h2>Uw Resultaten</h2>
+            <h3>Scores per partij (maximaal 20 punten):</h3>
+            <ul id="score-list"></ul>
+            <div id="best-match">
+                <h3 id="best-match-party"></h3>
+                <p id="best-match-description"></p>
+            </div>
+            <p style="text-align: center; font-size: 0.9em; color: #666; margin-top: 20px;">
+                <em>Disclaimer: Deze quiz is een hulpmiddel en gebaseerd op de verstrekte bronnen. Het is geen vervanging voor het zelf lezen van de volledige verkiezingsprogramma's.</em>
+            </p>
+            <button id="restart-btn-results">Opnieuw Beginnen</button>
+        </div>
+    </div>
+
+    <script>
+        const parties = [
+            "PvdD", "BBB", "CDA", "CU", "D66", "DENK", "FvD", "GroenLinks-PvdA",
+            "JA21", "PVV", "SP", "NSC", "VVD", "Volt"
+        ];
+
+        const quizData = [
+            {
+                "question": "1. Wat is volgens u de juiste aanpak voor de klimaatcrisis?",
+                "options": { "A": "Een radicale en snelle aanpak is nodig. Nederland moet zo snel mogelijk klimaatneutraal zijn, met 2030 als uitgangspunt, en de vervuiler moet betalen.", "B": "Klimaatbeleid moet vooral haalbaar, uitvoerbaar en betaalbaar zijn. We moeten ons aanpassen aan het klimaat en realistische doelen stellen.", "C": "Het huidige klimaatbeleid is onbetaalbare gekte. We moeten de Klimaatwet intrekken, ons terugtrekken uit het Klimaatakkoord van Parijs en stoppen met de energietransitie." },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "D66", "Volt", "SP"], "B": ["BBB", "CDA", "NSC", "CU"], "C": ["PVV", "FvD", "JA21", "VVD"] }
+            },
+            {
+                "question": "2. Hoe moet Nederland zijn energie in de toekomst opwekken?",
+                "options": { "A": "We moeten vol inzetten op zon en wind. Kernenergie is een schijnoplossing die we moeten afbouwen vanwege de risico's en het afvalprobleem.", "B": "We hebben een mix nodig van duurzame energie én kernenergie. Kerncentrales zijn onmisbaar voor een betrouwbare en betaalbare energievoorziening.", "C": "We moeten de gaswinning in Groningen hervatten en onze kolen- en gascentrales openhouden. Windturbines en zonneparken moeten we niet meer bijbouwen." },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "SP"], "B": ["BBB", "CDA", "D66", "VVD", "NSC", "JA21", "CU", "Volt"], "C": ["PVV", "FvD"] }
+            },
+            {
+                "question": "3. Fossiele subsidies, die nu miljarden per jaar bedragen, moeten wat u betreft...",
+                "options": { "A": "Per direct worden beëindigd. Het geld moet worden ingezet voor de omschakeling naar een duurzame economie en om huishoudens te helpen.", "B": "Zorgvuldig worden afgebouwd, maar niet ten koste van de concurrentiekracht van onze industrie en de betaalbaarheid voor burgers.", "C": "In stand blijven. Het afschaffen ervan schaadt onze economie en de portemonnee van de burger." },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "D66", "Volt", "SP"], "B": ["VVD", "NSC", "CU"], "C": ["BBB", "PVV", "FvD", "JA21"] }
+            },
+            {
+                "question": "4. Hoe kijkt u naar de toekomst van de veehouderij in Nederland?",
+                "options": { "A": "De veestapel moet drastisch krimpen met minstens 75%. We moeten een einde maken aan de bio-industrie vanwege dierenleed, stikstof en klimaatimpact.", "B": "De sector verdient waardering en moet kunnen doen waar ze goed in is: voedsel produceren. Gedwongen uitkoop is onbespreekbaar.", "C": "Er is een transitie nodig in samenwerking met boeren, waarbij we hen perspectief en een goed verdienmodel bieden om de stikstofdoelen te halen." },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA"], "B": ["BBB", "PVV", "JA21"], "C": ["D66", "NSC", "CU", "VVD", "CDA", "Volt"] }
+            },
+            {
+                "question": "5. Wat is de beste aanpak voor de stikstofcrisis?",
+                "options": { "A": "Alle sectoren, inclusief luchtvaart en industrie, moeten hun uitstoot verplicht verminderen. Een forse krimp van de veehouderij is daarbij onvermijdelijk.", "B": "Het stikstofbeleid moet volledig van tafel. De regels zijn gebaseerd op foute modellen en schaden de boeren en de economie onnodig.", "C": "We moeten de modellenwerkelijkheid (KDW) loslaten en sturen op de daadwerkelijke staat van de natuur. PAS-melders moeten met voorrang gelegaliseerd worden." },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA"], "B": ["FvD", "PVV"], "C": ["BBB", "CDA", "NSC", "JA21"] }
+            },
+            {
+                "question": "6. Hoe kijkt u naar dierenwelzijn en dierenrechten?",
+                "options": { "A": "Dierenrechten moeten in de Grondwet. De behoeften van dieren staan voorop, ook als dat ten koste gaat van economische belangen. De jacht voor plezier moet verboden worden.", "B": "Dieren in de Nederlandse veehouderij hebben het al goed. Aanvullende regels zijn niet nodig. Jacht en faunabeheer zijn een belangrijk onderdeel van goed natuuronderhoud.", "C": "Het welzijn van dieren is belangrijk, maar moet in balans zijn met de belangen van boeren en de economie. We steunen het Convenant Dierwaardige Veehouderij." },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "SP"], "B": ["BBB", "JA21"], "C": ["CDA", "D66", "NSC", "CU", "VVD", "Volt"] }
+            },
+            {
+                "question": "7. Wat moet de overheid doen aan de stijgende kosten voor levensonderhoud?",
+                "options": { "A": "De btw op boodschappen moet naar 0%, net als op groente en fruit. Ook de btw op energie moet omlaag.", "B": "We moeten de belastingen op werk verlagen en het toeslagenstelsel vereenvoudigen, zodat mensen meer overhouden van hun loon.", "C": "We moeten de lonen en uitkeringen verhogen. Het minimumloon moet naar €18 per uur. De overheid moet maximumprijzen voor basisproducten instellen." },
+                "scores": { "A": ["GroenLinks-PvdA", "DENK", "PVV"], "B": ["VVD", "D66", "CDA", "NSC", "JA21"], "C": ["SP", "PvdD", "CU"] }
+            },
+            {
+                "question": "8. Hoe moet de belasting op vermogen eruitzien?",
+                "options": { "A": "Er moet een miljonairsbelasting of een klimaatbelasting voor de grootste vermogens komen. De erfbelasting voor grote erfenissen moet omhoog.", "B": "De belastingen op sparen (box 3) en erven moeten zeker niet omhoog. Het liefst worden ze afgeschaft om vermogensopbouw te stimuleren.", "C": "We moeten belasting heffen op daadwerkelijk genoten inkomsten uit vermogen, niet op fictief rendement." },
+                "scores": { "A": ["PvdD", "GroenLinks-PvdA", "SP", "CU", "Volt"], "B": ["FvD", "JA21", "VVD", "PVV"], "C": ["NSC", "CDA", "BBB", "D66", "DENK"] }
+            },
+            {
+                "question": "9. Wat vindt u van het eigen risico in de zorg?",
+                "options": { "A": "Het eigen risico moet volledig worden afgeschaft. Zorg mag geen financiële drempel zijn.", "B": "Het eigen risico moet niet worden verlaagd of afgeschaft, omdat dit de premie voor iedereen duurder maakt. Wel kunnen we kwetsbare groepen gericht helpen.", "C": "Het eigen risico moet niet stijgen. We kunnen het wel hervormen door een maximumbedrag per behandeling in te stellen." },
+                "scores": { "A": ["PvdD", "PVV", "SP", "GroenLinks-PvdA", "DENK", "CU"], "B": ["JA21", "VVD"], "C": ["CDA", "D66", "NSC"] }
+            },
+            {
+                "question": "10. Wat moet het uitgangspunt zijn van het Nederlandse asielbeleid?",
+                "options": { "A": "Een totale asielstop. Asielzoekers moeten aan de grens worden geweigerd en we moeten internationale verdragen opzeggen.", "B": "Een humaan en solidair beleid. We moeten zorgen voor veilige vluchtroutes, menswaardige opvang en de grondoorzaken van migratie aanpakken.", "C": "We moeten meer grip krijgen en de instroom beperken. Asielprocedures moeten waar mogelijk buiten Europa plaatsvinden en we moeten strenger zijn op gezinshereniging." },
+                "scores": { "A": ["PVV", "FvD", "JA21"], "B": ["PvdD", "GroenLinks-PvdA", "Volt", "SP", "DENK"], "C": ["BBB", "CDA", "VVD", "NSC", "CU"] }
+            },
+            {
+                "question": "11. Hoe moet de opvang van asielzoekers worden georganiseerd?",
+                "options": { "A": "De Spreidingswet moet worden ingetrokken. Gemeenten moeten zelf beslissen over opvang, zonder dwang vanuit Den Haag. Er komen geen azc's meer bij.", "B": "De Spreidingswet moet worden uitgevoerd voor een eerlijke verdeling over het land. Opvang moet kleinschalig en menswaardig zijn.", "C": "Statushouders krijgen geen voorrang meer op sociale huurwoningen. Zij sluiten achteraan in de rij, net als iedereen." },
+                "scores": { "A": ["BBB", "PVV", "FvD", "JA21"], "B": ["CDA", "D66", "GroenLinks-PvdA", "Volt", "NSC", "CU"], "C": ["VVD", "SP"] }
+            },
+            {
+                "question": "12. Wat verwacht u van nieuwkomers in Nederland?",
+                "options": { "A": "Ze moeten zich aanpassen aan de Nederlandse cultuur en waarden. Wie hier wil wonen, hoort mee te doen, de taal te leren en onze normen te respecteren. Dit is niet onderhandelbaar.", "B": "De overheid moet stoppen met het label 'integratie' voor mensen die hier opgroeien. We moeten uitgaan van wederzijdse acceptatie, niet van eenzijdige aanpassing.", "C": "Iedereen, ook nieuwkomers, moet onze vrije waarden onderschrijven. Wie onze wetten afwijst of onze verdraagzaamheid ondermijnt, heeft hier niets te zoeken." },
+                "scores": { "A": ["BBB", "PVV", "VVD", "NSC", "CDA", "JA21", "CU"], "B": ["DENK"], "C": ["GroenLinks-PvdA", "Volt"] }
+            },
+            {
+                "question": "13. Wat is de beste verhouding tussen Nederland en de Europese Unie?",
+                "options": { "A": "We moeten streven naar een federaal Europa met een Europees leger en een Europese minister van Financiën. Grote problemen kunnen we alleen samen oplossen.", "B": "We moeten uit de EU stappen (Nexit). De EU ondermijnt onze soevereiniteit en kost ons miljarden. We moeten weer baas in eigen land worden.", "C": "De EU is nuttig voor handel en veiligheid, maar we moeten kritisch zijn op 'Brusselse bemoeizucht'. We moeten geen nationale koppen op Europees beleid zetten." },
+                "scores": { "A": ["D66", "Volt"], "B": ["PVV", "FvD"], "C": ["BBB", "CDA", "VVD", "NSC", "JA21", "SP", "CU", "GroenLinks-PvdA"] }
+            },
+            {
+                "question": "14. Hoeveel moet Nederland uitgeven aan defensie?",
+                "options": { "A": "Fors meer. We moeten de nieuwe NAVO-norm van 3,5% van het BBP als uitgangspunt nemen om onze vrijheid en veiligheid te beschermen.", "B": "De uitgaven moeten omhoog, maar niet ten koste van zorg, onderwijs en sociale zekerheid. We zetten in op vrede en diplomatie.", "C": "Investeren in defensie is nodig, maar we moeten ook investeren in een weerbare samenleving met burgersteunpunten en goede infrastructuur." },
+                "scores": { "A": ["D66", "VVD", "NSC", "CDA", "JA21", "CU"], "B": ["PvdD", "SP", "GroenLinks-PvdA"], "C": ["BBB"] }
+            },
+            {
+                "question": "15. Wat is de juiste houding ten opzichte van het conflict tussen Israël en de Palestijnen?",
+                "options": { "A": "Israël is een democratie en heeft het recht op zelfverdediging. Nederland moet de banden met Israël versterken en de ambassade naar Jeruzalem verhuizen.", "B": "Nederland moet de genocide en bezetting door Israël veroordelen, sancties instellen en de Palestijnse staat erkennen. Het internationaal recht moet leidend zijn.", "C": "We moeten streven naar een tweestatenoplossing. De illegale Israëlische nederzettingen ondermijnen de vrede. Het geweld van Hamas is onacceptabel." },
+                "scores": { "A": ["PVV", "JA21"], "B": ["PvdD", "DENK", "SP", "GroenLinks-PvdA"], "C": ["CDA", "D66", "VVD", "NSC", "CU", "Volt"] }
+            },
+            {
+                "question": "16. Hoe moet de overheid omgaan met de economie?",
+                "options": { "A": "De overheid moet kleiner, met minder regels en lagere belastingen. Ze moet zich richten op kerntaken en de burger en ondernemer vrijlaten.", "B": "De overheid moet een sterke, sturende rol hebben in publieke voorzieningen als zorg, wonen en energie. Marktwerking moet worden teruggedrongen.", "C": "De overheid moet betrouwbaar en dienstbaar zijn, met oog voor de menselijke maat en de kracht van gemeenschappen (noaberschap)." },
+                "scores": { "A": ["VVD", "FvD", "JA21"], "B": ["PvdD", "SP", "GroenLinks-PvdA", "Volt", "DENK"], "C": ["BBB", "CDA", "NSC", "CU"] }
+            },
+            {
+                "question": "17. Moeten burgers meer directe invloed krijgen via referenda?",
+                "options": { "A": "Ja, er moet een bindend correctief referendum komen naar Zwitsers model. De bevolking moet de politiek kunnen terugfluiten.", "B": "Ja, het raadgevend referendum moet worden heringevoerd, eventueel in combinatie met burgerberaden om complexe vraagstukken goed te kunnen wegen.", "C": "Nee, referenda bieden schijninvloed en vergroten de verdeeldheid. De volksvertegenwoordiging moet de besluiten nemen." },
+                "scores": { "A": ["SP", "FvD", "PVV"], "B": ["PvdD", "D66", "NSC"], "C": ["JA21", "CU", "Volt"] }
+            },
+            {
+                "question": "18. Wat vindt u van de monarchie?",
+                "options": { "A": "We moeten het koningschap moderniseren naar een puur ceremoniële rol. De koning moet belasting betalen, net als iedereen.", "B": "De koning moet weer een rol krijgen bij de kabinetsformatie. Het Koningshuis is onmiskenbaar verbonden met onze geschiedenis en dat moeten we koesteren.", "C": "Er moet een referendum komen over de wenselijkheid van het Koninklijk Huis. Uiteindelijk moet Nederland een republiek worden." },
+                "scores": { "A": ["PvdD", "D66", "GroenLinks-PvdA", "Volt"], "B": ["BBB", "JA21"], "C": ["FvD", "SP"] }
+            },
+            {
+                "question": "19. Hoe moet de overheid omgaan met tradities als Sinterklaas?",
+                "options": { "A": "Sinterklaas moet een feest voor iedereen zijn, dus Zwarte Piet moet overal worden afgeschaft.", "B": "De overheid moet zich niet bemoeien met tradities. Sinterklaas moet gevierd worden mét Zwarte Piet.", "C": "Lokale tradities en gebruiken, zoals sinterklaasintochten, moeten worden gekoesterd." },
+                "scores": { "A": ["D66", "GroenLinks-PvdA", "PvdD", "Volt", "DENK"], "B": ["FvD", "PVV"], "C": ["BBB"] }
+            },
+            {
+                "question": "20. Wat is uw standpunt over online privacy en de macht van techbedrijven?",
+                "options": { "A": "De overheid moet burgers beschermen tegen de macht van Big Tech. We moeten investeren in Europese, open-source alternatieven en de privacy streng waarborgen.", "B": "We moeten burgers en ondernemers vrijlaten en niet te veel regels opleggen. De focus moet liggen op innovatie en economische groei.", "C": "De overheid moet burgers beschermen met duidelijke regels, maar tegelijkertijd de kansen van digitalisering omarmen. We moeten een balans vinden tussen vrijheid en veiligheid." },
+                "scores": { "A": ["Volt", "D66", "PvdD", "GroenLinks-PvdA", "SP"], "B": ["VVD", "JA21"], "C": ["CDA", "NSC", "BBB", "CU"] }
+            }
+        ];
+
+        const partyDescriptions = {
+            "PvdD": "U hecht zeer veel waarde aan klimaat, natuur en dierenrechten. U kiest voor een 'radicaal ander perspectief' waarin een leefbare Aarde centraal staat. Dit betekent een snelle afbouw van de vee-industrie, een einde aan de bio-industrie, en een verbod op plezierjacht. Financieel kiest u voor het belasten van de grootste vermogens en vervuilers en u bent voor het afschaffen van het eigen risico in de zorg.",
+            "BBB": "U bent trots op de Nederlandse boeren en vindt dat zij de ruimte moeten krijgen om te ondernemen. U gelooft in een nuchtere aanpak van klimaat- en stikstofproblemen, samengevat in de leus 'Wie rood staat, kan niet groen doen'. U verzet zich tegen gedwongen uitkoop van boeren en 'betuttelend beleid' zoals een suikertaks. U hecht waarde aan de regio, 'noaberschap' en Nederlandse tradities.",
+            "CDA": "U kiest voor een fatsoenlijk land, gebouwd op vertrouwen en verantwoordelijkheid. U zoekt een balans tussen een sterke, duurzame economie en een betrokken samenleving. U bent voor het halen van de Europese klimaatdoelen met een mix van duurzame energie en kernenergie. Op het gebied van stikstof wilt u samen met boeren tot oplossingen komen. U pleit voor een strenger, maar werkbaar migratiebeleid met asielprocedures buiten Europa.",
+            "CU": "U benadert de politiek vanuit christelijk-sociale waarden en hecht veel belang aan gemeenschappen, het gezin en de bescherming van het leven. U bent voor ambitieus klimaatbeleid en zorg voor de schepping. Financieel wilt u gezinnen ondersteunen met een flinke verhoging van de kinderbijslag en de grootste vermogens extra belasten. U bent voorstander van een humane opvang van vluchtelingen, maar ook voor een streng en realistisch migratiebeleid.",
+            "D66": "U streeft naar een progressief en vrij Nederland in een sterk en verenigd Europa. U bent voor ambitieuze klimaatdoelen, meer investeringen in schone energie en een toekomst voor boeren én natuur. U hecht veel waarde aan gelijke kansen, LHBTIQA+-rechten en een sterke, weerbare democratie. U wilt de woningnood doorbreken met de bouw van tien nieuwe steden en u bent voorstander van een humaan Europees asielbeleid.",
+            "DENK": "De strijd tegen discriminatie en racisme is voor u een topprioriteit. U wilt een overheid die institutioneel racisme hard aanpakt en streeft naar een samenleving waarin iedereen gelijkwaardig wordt behandeld. U bent kritisch op het label 'integratie' en pleit voor wederzijdse acceptatie. Financieel wilt u de koopkracht van lage en middeninkomens verbeteren, bijvoorbeeld door de btw op boodschappen te verlagen en de huren te maximeren. U bent voorstander van een humane opvang van vluchtelingen.",
+            "FvD": "U wilt Nederland weer soeverein, vrij en trots maken. Dit betekent een Nexit, het opzeggen van internationale verdragen en het stoppen met alle klimaat- en stikstofbeleid. U pleit voor het heropenen van het Groninger gasveld voor betaalbare energie. U wilt een radicale belastingverlaging, een kleinere overheid en meer ruimte voor ondernemers. Democratische vernieuwing via bindende referenda is voor u een kernpunt.",
+            "GroenLinks-PvdA": "U gelooft in solidariteit en het eerlijk delen van welvaart in een groene en duurzame toekomst. U wilt de klimaatcrisis ambitieus aanpakken, de grote vervuilers laten betalen en de fossiele subsidies afschaffen. U streeft naar een Nieuwe Verzorgingsstaat met hogere lonen, betaalbare woningen en een sterke publieke sector. U staat voor een humaan migratiebeleid en een sterke, sociale Europese Unie.",
+            "JA21": "U kiest voor een conservatief-liberale koers met een focus op veiligheid, welvaart en grenzen. U wilt de soevereiniteit van Nederland herstellen door internationale verdragen te herzien en migratie sterk te beperken, met als doel een asielstop. U bent voor een kleinere overheid, lagere belastingen en meer ruimte voor ondernemers. Het beschermen van de eigen woning tegen extra belastingen is voor u belangrijk.",
+            "PVV": "U wilt de Nederlander weer op 1 zetten. Een totale asielstop en het sluiten van de grenzen voor immigratie uit islamitische landen is uw topprioriteit. U wilt de Klimaatwet intrekken, de energietransitie stoppen en de btw op energie en boodschappen verlagen. U bent voor een harde aanpak van criminaliteit en het beschermen van de Nederlandse cultuur en tradities, inclusief Zwarte Piet.",
+            "SP": "U streeft naar een super sociaal Nederland, waarin de belangen van de werkende klasse voorop staan. U wilt een einde maken aan marktwerking in de publieke sector: het eigen risico moet af, de zorg moet weer publiek worden en wonen moet een recht zijn, geen winstmodel. U pleit voor een forse verhoging van het minimumloon, het nationaliseren van de energievoorziening en gratis openbaar vervoer.",
+            "NSC": "U wilt de basis op orde brengen en vecht voor een betrouwbare overheid en bestaanszekerheid. U kiest voor een streng en realistisch migratiebeleid op alle vlakken (arbeid, studie, asiel) en een weerbare samenleving met aandacht voor defensie. U bent voor het oplossen van de stikstofcrisis met een aanpak die de modellenwerkelijkheid loslaat en boeren perspectief biedt. Een eenvoudiger en eerlijker belasting- en toeslagenstelsel en het oplossen van de wooncrisis zijn voor u cruciale punten.",
+            "VVD": "U staat voor een land met vrijheid, veiligheid en welvaart. U wilt lagere lasten voor de middenklasse, een kleinere overheid, en u beschermt eigenwoningbezit. De partij pleit voor een strenger asielstelsel om meer grip op migratie te krijgen. Economisch ondersteunt u ondernemers en gelooft u in een sterke, innovatieve economie.",
+            "Volt": "U gelooft in een sterk en federaal Europa als antwoord op de grote uitdagingen van deze tijd. U pleit voor een Europese krijgsmacht, een Europese minister van Financiën en een gezamenlijk, ambitieus klimaatbeleid. U wilt investeren in een 'Silicon Europa' om technologisch onafhankelijk te zijn. U bent voorstander van een humaan Europees asielbeleid, een basisinkomen en het verlagen van de kiesleeftijd naar 16 jaar."
+        };
+        
+        let currentQuestionIndex = 0;
+        const userAnswers = {};
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionCounterEl = document.getElementById('question-counter');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const nextBtn = document.getElementById('next-btn');
+        const backBtn = document.getElementById('back-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const restartBtnResults = document.getElementById('restart-btn-results');
+
+        function loadQuestion() {
+            const questionData = quizData[currentQuestionIndex];
+            
+            questionCounterEl.textContent = `Vraag ${currentQuestionIndex + 1} van ${quizData.length}`;
+            questionTextEl.textContent = questionData.question;
+            optionsContainerEl.innerHTML = '';
+
+            for (const key in questionData.options) {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'option';
+                radio.value = key;
+                radio.id = `option-${key}`;
+
+                if (userAnswers[currentQuestionIndex] === key) {
+                    radio.checked = true;
+                    optionDiv.classList.add('selected');
+                }
+                
+                const label = document.createElement('label');
+                label.htmlFor = `option-${key}`;
+                label.textContent = questionData.options[key];
+
+                optionDiv.appendChild(radio);
+                optionDiv.appendChild(label);
+                
+                optionDiv.addEventListener('click', () => {
+                    radio.checked = true;
+                    saveAnswer();
+                    document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+                    optionDiv.classList.add('selected');
+                });
+
+                optionsContainerEl.appendChild(optionDiv);
+            }
+            updateButtonStates();
+        }
+        
+        function saveAnswer() {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            if (selectedOption) {
+                userAnswers[currentQuestionIndex] = selectedOption.value;
+            }
+            updateButtonStates();
+        }
+
+        function updateButtonStates() {
+            backBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = currentQuestionIndex === quizData.length - 1;
+            
+            const allAnswered = Object.keys(userAnswers).length === quizData.length;
+            submitBtn.disabled = !allAnswered;
+        }
+
+        function showResults() {
+            const scores = {};
+            parties.forEach(party => scores[party] = 0);
+
+            for (const qIndex in userAnswers) {
+                const answer = userAnswers[qIndex];
+                const scoringParties = quizData[qIndex].scores[answer];
+                if (scoringParties) {
+                    scoringParties.forEach(party => {
+                        scores[party]++;
+                    });
+                }
+            }
+
+            const sortedScores = Object.entries(scores).sort(([, a], [, b]) => b - a);
+
+            quizContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
+
+            const scoreListEl = document.getElementById('score-list');
+            scoreListEl.innerHTML = '';
+            sortedScores.forEach(([party, score]) => {
+                const li = document.createElement('li');
+                li.textContent = `${party}: ${score}`;
+                scoreListEl.appendChild(li);
+            });
+
+            const bestMatchPartyName = sortedScores.length > 0 ? sortedScores : 'Geen';
+            document.getElementById('best-match-party').textContent = `Uw beste match: ${bestMatchPartyName}`;
+            document.getElementById('best-match-description').textContent = partyDescriptions[bestMatchPartyName] || "Geen beschrijving beschikbaar.";
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            if (!selectedOption && userAnswers[currentQuestionIndex] === undefined) {
+                alert('Kies alstublieft een antwoord.');
+                return;
+            }
+            saveAnswer(); 
+            
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        });
+
+        backBtn.addEventListener('click', () => {
+            saveAnswer(); 
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+        
+        submitBtn.addEventListener('click', () => {
+            saveAnswer(); 
+            if (Object.keys(userAnswers).length === quizData.length) {
+                showResults();
+            } else {
+                alert('Beantwoord alstublieft alle vragen voordat u de resultaten bekijkt.');
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            if (confirm('Weet u zeker dat u de quiz wilt resetten? Al uw antwoorden worden gewist.')) {
+                location.reload();
+            }
+        });
+        
+        restartBtnResults.addEventListener('click', () => {
+            location.reload();
+        });
+
+        document.addEventListener('DOMContentLoaded', loadQuestion);
+    </script>
+
+</body>
+</html>
