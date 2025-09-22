@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politieke Keuzewijzer Quiz (30 Vragen)</title>
+    <title>Politieke Keuzewijzer / Political Compass</title>
     <style>
         :root {
             --primary-color: #0056b3;
@@ -35,6 +35,24 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 800px;
+        }
+        
+        #language-selector {
+            text-align: center;
+        }
+
+        #language-selector h1 {
+            margin-bottom: 25px;
+        }
+        
+        #language-selector .btn {
+            width: 200px;
+            margin: 10px;
+            background-color: var(--secondary-color);
+        }
+        
+        #language-selector .btn:hover {
+            background-color: var(--primary-color);
         }
 
         h1, h2 {
@@ -215,101 +233,183 @@
 <body>
 
     <div class="container">
-        <div id="quiz-container">
-            <h1>Politieke Keuzewijzer</h1>
+        <div id="language-selector">
+            <h1>Kies uw taal / Choose your language</h1>
+            <button id="lang-nl" class="btn">Nederlands</button>
+            <button id="lang-en" class="btn">English</button>
+        </div>
+
+        <div id="quiz-container" style="display:none;">
+            <h1 id="quiz-title"></h1>
             <p id="question-counter"></p>
             <h2 id="question-text"></h2>
             <div id="options-container"></div>
             <div class="navigation-controls">
-                <button id="back-btn" class="btn">Terug</button>
-                <button id="next-btn" class="btn">Volgende</button>
+                <button id="back-btn" class="btn"></button>
+                <button id="next-btn" class="btn"></button>
             </div>
             <div class="action-controls">
-                <button id="reset-btn" class="btn">Reset</button>
-                <button id="submit-btn" class="btn" disabled>Versturen</button>
+                <button id="reset-btn" class="btn"></button>
+                <button id="submit-btn" class="btn" disabled></button>
             </div>
         </div>
 
         <div id="results-container" style="display:none;">
-            <h2>Uw Resultaten</h2>
-            <h3>Scores per partij (maximaal 30 punten):</h3>
+            <h2 id="results-title"></h2>
+            <h3 id="results-scores-title"></h3>
             <ul id="score-list"></ul>
             <div id="best-match">
                 <h3 id="best-match-party"></h3>
                 <p id="best-match-description"></p>
             </div>
-            <p style="text-align: center; font-size: 0.9em; color: #666; margin-top: 20px;">
-                <em>Disclaimer: Deze quiz is een hulpmiddel en gebaseerd op de verstrekte bronnen. Het is geen vervanging voor het zelf lezen van de volledige verkiezingsprogramma's.</em>
-            </p>
-            <button id="restart-btn-results">Opnieuw Beginnen</button>
+            <p id="results-disclaimer" style="text-align: center; font-size: 0.9em; color: #666; margin-top: 20px;"></p>
+            <button id="restart-btn-results"></button>
         </div>
     </div>
-
-    <script src="questions.js"></script>
-    <script src="partyDescriptions.js"></script>
-
+    
     <script>
+        // --- DATA AND LOGIC WILL BE LOADED DYNAMICALLY ---
+        // Global variables to hold the quiz data once loaded
+        let quizData, parties, partyDescriptions;
+
+        // --- UI & QUIZ STATE VARIABLES ---
         let currentQuestionIndex = 0;
         const userAnswers = {};
-
+        
+        // --- DOM ELEMENTS ---
+        const languageSelector = document.getElementById('language-selector');
         const quizContainer = document.getElementById('quiz-container');
         const resultsContainer = document.getElementById('results-container');
-        const questionCounterEl = document.getElementById('question-counter');
-        const questionTextEl = document.getElementById('question-text');
-        const optionsContainerEl = document.getElementById('options-container');
-        const nextBtn = document.getElementById('next-btn');
-        const backBtn = document.getElementById('back-btn');
-        const submitBtn = document.getElementById('submit-btn');
-        const resetBtn = document.getElementById('reset-btn');
-        const restartBtnResults = document.getElementById('restart-btn-results');
+        // ... (other elements will be fetched inside functions)
 
+        // --- UI TEXT STRINGS FOR TRANSLATION ---
+        const uiStrings = {
+            'nl': {
+                quizTitle: "Politieke Keuzewijzer",
+                questionCounter: (current, total) => `Vraag ${current} van ${total}`,
+                back: "Terug",
+                next: "Volgende",
+                reset: "Reset",
+                submit: "Versturen",
+                neutralOption: "Weet ik niet / Geen mening",
+                resultsTitle: "Uw Resultaten",
+                scoresTitle: (max) => `Scores per partij (maximaal ${max} punten):`,
+                bestMatch: (party) => `Uw beste match: ${party}`,
+                noMatch: "Geen duidelijke match gevonden.",
+                noMatchDesc: "U heeft mogelijk te veel neutrale antwoorden gegeven om een match te bepalen.",
+                disclaimer: "Disclaimer: Deze quiz is een hulpmiddel en gebaseerd op de verstrekte bronnen. Het is geen vervanging voor het zelf lezen van de volledige verkiezingsprogramma's.",
+                restart: "Opnieuw Beginnen",
+                alertChooseAnswer: "Kies alstublieft een antwoord.",
+                alertAllQuestions: "Beantwoord alstublieft alle vragen voordat u de resultaten bekijkt.",
+                confirmReset: "Weet u zeker dat u de quiz wilt resetten? Al uw antwoorden worden gewist."
+            },
+            'en': {
+                quizTitle: "Political Compass Quiz",
+                questionCounter: (current, total) => `Question ${current} of ${total}`,
+                back: "Back",
+                next: "Next",
+                reset: "Reset",
+                submit: "Submit",
+                neutralOption: "I don't know / No opinion",
+                resultsTitle: "Your Results",
+                scoresTitle: (max) => `Scores per party (maximum ${max} points):`,
+                bestMatch: (party) => `Your best match: ${party}`,
+                noMatch: "No clear match found.",
+                noMatchDesc: "You may have provided too many neutral answers to determine a match.",
+                disclaimer: "Disclaimer: This quiz is a tool based on the provided sources. It is not a substitute for reading the full election programs yourself.",
+                restart: "Start Over",
+                alertChooseAnswer: "Please choose an answer.",
+                alertAllQuestions: "Please answer all questions before submitting.",
+                confirmReset: "Are you sure you want to reset the quiz? All your answers will be erased."
+            }
+        };
+        let currentLangStrings;
+
+        // --- DYNAMIC SCRIPT LOADER ---
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => resolve(script);
+                script.onerror = () => reject(new Error(`Script load error for ${src}`));
+                document.head.appendChild(script);
+            });
+        }
+
+        // --- INITIALIZATION ---
+        document.getElementById('lang-nl').addEventListener('click', () => startGame('nl'));
+        document.getElementById('lang-en').addEventListener('click', () => startGame('en'));
+
+        async function startGame(lang) {
+            currentLangStrings = uiStrings[lang];
+            try {
+                // Load data files sequentially
+                await loadScript(`questions${lang.toUpperCase()}.js`);
+                await loadScript(`partyDescriptions${lang.toUpperCase()}.js`);
+
+                // Data is now available globally
+                // Hide language selector and show quiz
+                languageSelector.style.display = 'none';
+                quizContainer.style.display = 'block';
+                
+                // Set initial UI text
+                document.getElementById('quiz-title').textContent = currentLangStrings.quizTitle;
+                document.getElementById('back-btn').textContent = currentLangStrings.back;
+                document.getElementById('next-btn').textContent = currentLangStrings.next;
+                document.getElementById('reset-btn').textContent = currentLangStrings.reset;
+                document.getElementById('submit-btn').textContent = currentLangStrings.submit;
+
+                // Load the first question
+                loadQuestion();
+            } catch (error) {
+                console.error("Failed to load quiz data:", error);
+                languageSelector.innerHTML = "<h1>Error loading quiz data. Please try again later.</h1>";
+            }
+        }
+        
+        // --- QUIZ LOGIC (Largely unchanged) ---
         function loadQuestion() {
             const questionData = quizData[currentQuestionIndex];
+            const questionCounterEl = document.getElementById('question-counter');
+            const questionTextEl = document.getElementById('question-text');
+            const optionsContainerEl = document.getElementById('options-container');
             
-            questionCounterEl.textContent = `Vraag ${currentQuestionIndex + 1} van ${quizData.length}`;
+            questionCounterEl.textContent = currentLangStrings.questionCounter(currentQuestionIndex + 1, quizData.length);
             questionTextEl.textContent = questionData.question;
             optionsContainerEl.innerHTML = '';
 
-            // Load A, B, C options
             for (const key in questionData.options) {
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'option';
-
                 const radio = document.createElement('input');
                 radio.type = 'radio';
                 radio.name = 'option';
                 radio.value = key;
                 radio.id = `option-${key}`;
-
                 if (userAnswers[currentQuestionIndex] === key) {
                     radio.checked = true;
                     optionDiv.classList.add('selected');
                 }
-                
                 const label = document.createElement('label');
                 label.htmlFor = `option-${key}`;
                 label.textContent = questionData.options[key];
-
                 optionDiv.appendChild(radio);
                 optionDiv.appendChild(label);
-                
                 optionDiv.addEventListener('click', () => {
                     radio.checked = true;
                     saveAnswer();
                     document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
                     optionDiv.classList.add('selected');
                 });
-
                 optionsContainerEl.appendChild(optionDiv);
             }
 
-            // Add "Don't know / No opinion" option
             const neutralOptionDiv = document.createElement('div');
             neutralOptionDiv.className = 'option';
             const neutralRadio = document.createElement('input');
             neutralRadio.type = 'radio';
             neutralRadio.name = 'option';
-            neutralRadio.value = 'X'; // Neutral value
+            neutralRadio.value = 'X';
             neutralRadio.id = 'option-X';
             if (userAnswers[currentQuestionIndex] === 'X') {
                 neutralRadio.checked = true;
@@ -317,7 +417,7 @@
             }
             const neutralLabel = document.createElement('label');
             neutralLabel.htmlFor = 'option-X';
-            neutralLabel.textContent = 'Weet ik niet / Geen mening';
+            neutralLabel.textContent = currentLangStrings.neutralOption;
             neutralOptionDiv.appendChild(neutralRadio);
             neutralOptionDiv.appendChild(neutralLabel);
             neutralOptionDiv.addEventListener('click', () => {
@@ -327,7 +427,6 @@
                 neutralOptionDiv.classList.add('selected');
             });
             optionsContainerEl.appendChild(neutralOptionDiv);
-
             updateButtonStates();
         }
         
@@ -340,11 +439,10 @@
         }
 
         function updateButtonStates() {
-            backBtn.disabled = currentQuestionIndex === 0;
-            nextBtn.disabled = currentQuestionIndex === quizData.length - 1;
-            
+            document.getElementById('back-btn').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-btn').disabled = currentQuestionIndex === quizData.length - 1;
             const allAnswered = Object.keys(userAnswers).length === quizData.length;
-            submitBtn.disabled = !allAnswered;
+            document.getElementById('submit-btn').disabled = !allAnswered;
         }
 
         function showResults() {
@@ -353,9 +451,7 @@
 
             for (const qIndex in userAnswers) {
                 const answer = userAnswers[qIndex];
-                if (answer === 'X') { // Skip scoring for "Don't know"
-                    continue;
-                }
+                if (answer === 'X') continue;
                 const scoringParties = quizData[qIndex].scores[answer];
                 if (scoringParties) {
                     scoringParties.forEach(party => {
@@ -365,9 +461,14 @@
             }
 
             const sortedScores = Object.entries(scores).sort(([, a], [, b]) => b - a);
-
             quizContainer.style.display = 'none';
             resultsContainer.style.display = 'block';
+
+            // Set results UI text
+            document.getElementById('results-title').textContent = currentLangStrings.resultsTitle;
+            document.getElementById('results-scores-title').textContent = currentLangStrings.scoresTitle(quizData.length);
+            document.getElementById('results-disclaimer').textContent = currentLangStrings.disclaimer;
+            document.getElementById('restart-btn-results').textContent = currentLangStrings.restart;
 
             const scoreListEl = document.getElementById('score-list');
             scoreListEl.innerHTML = '';
@@ -377,31 +478,31 @@
                 scoreListEl.appendChild(li);
             });
 
-            if (sortedScores.length > 0) {
-                const bestMatchPartyName = sortedScores[0][0]; // Get the name of the top-scoring party
-                document.getElementById('best-match-party').textContent = `Uw beste match: ${bestMatchPartyName}`;
-                document.getElementById('best-match-description').textContent = partyDescriptions[bestMatchPartyName] || "Geen beschrijving beschikbaar.";
+            if (sortedScores.length > 0 && sortedScores[0][1] > 0) {
+                const bestMatchPartyName = sortedScores[0][0];
+                document.getElementById('best-match-party').textContent = currentLangStrings.bestMatch(bestMatchPartyName);
+                document.getElementById('best-match-description').textContent = partyDescriptions[bestMatchPartyName] || "";
             } else {
-                document.getElementById('best-match-party').textContent = "Geen duidelijke match gevonden.";
-                document.getElementById('best-match-description').textContent = "U heeft mogelijk te veel neutrale antwoorden gegeven om een match te bepalen.";
+                document.getElementById('best-match-party').textContent = currentLangStrings.noMatch;
+                document.getElementById('best-match-description').textContent = currentLangStrings.noMatchDesc;
             }
         }
 
-        nextBtn.addEventListener('click', () => {
+        // --- EVENT LISTENERS FOR BUTTONS ---
+        document.getElementById('next-btn').addEventListener('click', () => {
             const selectedOption = document.querySelector('input[name="option"]:checked');
             if (!selectedOption && userAnswers[currentQuestionIndex] === undefined) {
-                alert('Kies alstublieft een antwoord.');
+                alert(currentLangStrings.alertChooseAnswer);
                 return;
             }
             saveAnswer(); 
-            
             if (currentQuestionIndex < quizData.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
             }
         });
 
-        backBtn.addEventListener('click', () => {
+        document.getElementById('back-btn').addEventListener('click', () => {
             saveAnswer(); 
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
@@ -409,26 +510,24 @@
             }
         });
         
-        submitBtn.addEventListener('click', () => {
+        document.getElementById('submit-btn').addEventListener('click', () => {
             saveAnswer(); 
             if (Object.keys(userAnswers).length === quizData.length) {
                 showResults();
             } else {
-                alert('Beantwoord alstublieft alle vragen voordat u de resultaten bekijkt.');
+                alert(currentLangStrings.alertAllQuestions);
             }
         });
 
-        resetBtn.addEventListener('click', () => {
-            if (confirm('Weet u zeker dat u de quiz wilt resetten? Al uw antwoorden worden gewist.')) {
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            if (confirm(currentLangStrings.confirmReset)) {
                 location.reload();
             }
         });
         
-        restartBtnResults.addEventListener('click', () => {
+        document.getElementById('restart-btn-results').addEventListener('click', () => {
             location.reload();
         });
-
-        document.addEventListener('DOMContentLoaded', loadQuestion);
     </script>
 
 </body>
